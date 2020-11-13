@@ -1,11 +1,11 @@
 public class Plateau {
-	private final int[] plateau;
+	private final Block[][] plateau;
 
-	public Plateau (int[] p) {
-		this.plateau = p;
+	public Plateau (int x, int y) {
+		this.plateau = plateau[x][y];
 	}
 
-	public int[] getPlateau() {
+	public Block[][] getPlateau() {
 		return this.plateau;
 	}
 }
