@@ -1,7 +1,7 @@
 public class Animaux extends Block {
 	private final char _type;
 
-	public Block(char t) {
+	public Animaux(char t) {
 		this._type = t;
 	}
 

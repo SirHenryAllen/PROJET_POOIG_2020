@@ -1,5 +1,5 @@
-public interface modele {
-	public abstract boolean suppression();
-	public abstract boolean isEmpty();
-	public abstract boolean isDestructible();
+public interface Modele {
+	public abstract boolean selectionner(int x, int y);
+	public abstract boolean isEmpty(int x, int y);
+	public abstract boolean isDestructible(int x, int y);
 }
