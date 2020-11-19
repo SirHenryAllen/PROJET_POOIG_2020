@@ -2,10 +2,11 @@ public class BlockFixe extends Block {
 	private char _type;
 
 	public BlockFixe(char t) {
+		super();
 		this._type = t;
 	}
 
 	public char getType() {
-		return _type;
+		return this._type;
 	}
 }

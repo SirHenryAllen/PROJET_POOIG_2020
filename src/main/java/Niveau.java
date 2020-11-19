@@ -4,4 +4,9 @@ public class Niveau extends Groupe {
 	public Niveau(int x, int y) {
 		this._plateau = new Plateau(x, y);
 	}
+
+	public void ajouterBlock() {
+
+	}
+	
 }

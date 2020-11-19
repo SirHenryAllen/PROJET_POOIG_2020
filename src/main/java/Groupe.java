@@ -1,8 +1,13 @@
+import java.util.ArrayList;
+
 public class Groupe {
-	static Niveau[] suiteNiveau = new Niveau[1];
+	ArrayList<Niveau> suiteNiveau;
 
-	public Groupe (Niveau v) {
-		Niveau[] tmp = new Niveau[this.suiteNiveau.length+1];
+	public Groupe () {
+		this.suiteNiveau = new ArrayList<Niveau>();
+	}
 
+	public void ajouterNiveau(Niveau v) {
+		this.suiteNiveau.add(v);
 	}
 }
