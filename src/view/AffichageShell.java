@@ -9,7 +9,7 @@ public class AffichageShell {
 	public static void afficherFormatPlateauJoueur(Plateau p, int x, int y) {
 		char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();	// Définition d'un alphabet	pour l'affichage de la largeur
 		System.out.println("\n########################\nPlateau format utilisateur\n########################\n");
-		System.out.print("     |  ");
+		System.out.print("      |  ");
 		//Affichage des lettres références pour la largeur du tableau
 		for (int i = 0 ; i<y ; i++) {
 			System.out.print(alphabet[i] + "  ");
@@ -19,8 +19,9 @@ public class AffichageShell {
 		int a = 0;
 		for (int j = x ; j<p.getPlateau().length ; j++) {
 			a = j-x;
-			System.out.print("  " + a + "  |  ");
-			
+			if (a < 10) { 
+				System.out.print("  " + a + "   |  ");
+			} else { System.out.print("  " + a + "  |  "); }		
 			for (int k = 0 ; k<y ; k++) {
 				if (p.getBlock(j, k) == null) {
 					System.out.print(".  ");
@@ -46,6 +47,9 @@ public class AffichageShell {
 				//Affichage des blocks destructibles spéciaux
 				if (p.getBlock(j, k) instanceof BlockDestructibleSi) {
 					System.out.print("-  ");
+				}
+				if (p.getBlock(j, k) instanceof BlockFixe) {
+					System.out.print("# ");
 				}
 			}
 			System.out.println("");	
