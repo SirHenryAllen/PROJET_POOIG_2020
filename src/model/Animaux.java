@@ -1,3 +1,5 @@
+package model;
+
 public class Animaux extends Block {
 	private final char _type;
 

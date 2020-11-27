@@ -1,3 +1,5 @@
+package model;
+
 public class BlockFixe extends Block {
 	private char _type;
 

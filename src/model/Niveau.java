@@ -1,3 +1,5 @@
+package model;
+
 public class Niveau extends Groupe {
 	private Plateau _plateau;
 
@@ -23,9 +25,10 @@ public class Niveau extends Groupe {
 				}
 			}
 		}
-		AffichageShell.afficherFormatPlateau(this._plateau);
-		this._plateau.selectionner(2, 1, 2);
-		AffichageShell.afficherFormatPlateau(this._plateau);
+	}
+
+	public Plateau getPlateau() {
+		return this._plateau;
 	}
 	
 }

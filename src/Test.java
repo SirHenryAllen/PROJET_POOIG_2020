@@ -1,9 +1,15 @@
+import model.Niveau;
+import model.Plateau;
+import view.AffichageShell;
 public class Test {
 
 	public static void main (String[] args) {
-		//Plateau p = new Plateau(10, 10);
-		Niveau v1 = new Niveau(10, 10);
+		System.out.println("--------main--------");
+		
+		//Plateau p = new Plateau(20, 10);
+		Niveau v1 = new Niveau(20, 10);
 		v1.ajouterBlock(1);
-		//AffichageShell.afficherFormatPlateau(p);
+		AffichageShell.afficherFormatPlateauJoueur(v1.getPlateau(), 10, 10);
+		AffichageShell.afficherFormatPlateau(v1.getPlateau());
 	}
 }

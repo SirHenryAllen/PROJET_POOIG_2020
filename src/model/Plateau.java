@@ -1,4 +1,6 @@
-public class Plateau implements Modele {
+package model;
+
+public class Plateau {
 	private final Block[][] _plateau;
 
 	public Plateau (int x, int y) {

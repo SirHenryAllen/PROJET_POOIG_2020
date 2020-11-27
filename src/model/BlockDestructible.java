@@ -1,3 +1,5 @@
+package model;
+
 public class BlockDestructible extends Block {
 	public final char couleur;
 
