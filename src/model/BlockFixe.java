@@ -1,7 +1,7 @@
 package model;
 
 public class BlockFixe extends Block {
-	private char _type;
+	private char _type;	// type de block fixe
 
 	public BlockFixe(char t) {
 		super();

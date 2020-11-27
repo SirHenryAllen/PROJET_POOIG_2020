@@ -8,7 +8,7 @@ public class AffichageShell {
 
 	public static void afficherFormatPlateauJoueur(Plateau p, int x, int y) {
 		char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();	// Définition d'un alphabet	pour l'affichage de la largeur
-		System.out.println("\n########################\n########################\n");
+		System.out.println("\n########################\nPlateau format utilisateur\n########################\n");
 		System.out.print("     |  ");
 		//Affichage des lettres références pour la largeur du tableau
 		for (int i = 0 ; i<y ; i++) {
@@ -54,7 +54,7 @@ public class AffichageShell {
 
 	public static void afficherFormatPlateau(Plateau p) {
 		char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();	// Définition d'un alphabet	pour l'affichage de la largeur
-		System.out.println("\n########################\n########################\n");
+		System.out.println("\n########################\nPlateau format développeur\n########################\n");
 		if (p.getPlateau().length > 10) {
 			System.out.print("      |  ");
 		} else { System.out.print("     |  "); }

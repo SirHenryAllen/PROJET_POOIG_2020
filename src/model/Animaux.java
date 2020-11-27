@@ -1,9 +1,10 @@
 package model;
 
 public class Animaux extends Block {
-	private final char _type;
+	private final char _type;	// Type d'animal
 
 	public Animaux(char t) {
+		super();
 		this._type = t;
 	}
 

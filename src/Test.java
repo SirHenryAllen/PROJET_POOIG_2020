@@ -1,5 +1,5 @@
 import model.Niveau;
-import model.Plateau;
+//import model.Plateau;
 import view.AffichageShell;
 public class Test {
 

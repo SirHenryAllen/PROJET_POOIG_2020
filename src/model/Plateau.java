@@ -8,6 +8,7 @@ public class Plateau {
 	}
 	
 	public boolean ajouter(int x, int y, Block b) {
+		// Ajout du Block b à l'indice x,y : ssi x,y est vide
 		if (isEmpty(x, y)) {
 			this._plateau[x][y] = b;
 			return true;
@@ -17,6 +18,7 @@ public class Plateau {
 	}
 
 	public boolean isEmpty(int x, int y) {
+		// Vérification que l'indice x,y est bien vide
 		if (this._plateau[x][y] == null) {
 			return true;
 		} return false;
