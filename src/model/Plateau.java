@@ -25,45 +25,55 @@ public class Plateau {
 	} 
 
 	public void selectionner(int x, int y, boolean[][] verifRecurence) {
-
+			//System.out.println(((BlockDestructible)this._plateau[x][y]).couleur);
+			//System.out.println("x = " + x + " ; y = " + y);
 			if (!(isEmpty(x, y+1))) {
 				if (isDestructible(x, y+1)) {
-					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y+1]).couleur) && verifRecurence[x][y+1] == false) {
-						verifRecurence[x][y] = true;
-						selectionner(x, y+1, verifRecurence);
-					}	
-					this._plateau[x][y] = null;
+					if (verifRecurence[x][y+1] == false) {
+						if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y+1]).couleur)) {
+							verifRecurence[x][y] = true;
+							selectionner(x, y+1, verifRecurence);
+						}	
+						//this._plateau[x][y] = null;
+					}
 				}
 			}
 
 			if (!(isEmpty(x+1, y))) {
 				if (isDestructible(x+1, y)) {
-					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x+1][y]).couleur) && verifRecurence[x+1][y] == false) {
-						verifRecurence[x][y] = true;
-						selectionner(x+1, y, verifRecurence);
+					if (verifRecurence[x+1][y] == false) {
+						if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x+1][y]).couleur)) {
+							verifRecurence[x][y] = true;
+							selectionner(x+1, y, verifRecurence);
+						}
+						//this._plateau[x][y] = null;
 					}
-					this._plateau[x][y] = null;
 				}		
 			}
 
 			if (!(isEmpty(x, y-1))) {
 				if (isDestructible(x, y-1)) {
-					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y-1]).couleur) && verifRecurence[x][y-1] == false) {
-						verifRecurence[x][y] = true;
-						selectionner(x, y-1, verifRecurence);
+					if (verifRecurence[x][y-1] == false) {
+						if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y-1]).couleur)) {
+							verifRecurence[x][y] = true;
+							selectionner(x, y-1, verifRecurence);
+						}
+						//this._plateau[x][y] = null;
 					}
-					this._plateau[x][y] = null;
 				}	
 			}
 			if (!(isEmpty(x-1, y))) {
 				if (isDestructible(x-1, y)) {
-					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x-1][y]).couleur) && verifRecurence[x-1][y] == false) {
-						verifRecurence[x][y] = true;
-						selectionner(x-1, y, verifRecurence);
+					if (verifRecurence[x-1][y] == false) {
+						if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x-1][y]).couleur)) {
+							verifRecurence[x][y] = true;
+							selectionner(x-1, y, verifRecurence);
+						}
+						//this._plateau[x][y] = null;
 					}
-					this._plateau[x][y] = null;
 				}
 			}
+			this._plateau[x][y] = null;
 		
 	}
 
@@ -102,10 +112,6 @@ public class Plateau {
 
 	public void setBlock(int x, int y, Block b) {
 		this._plateau[x][y] = b;
-	}
-
-	public void affiche() {
-		System.out.println(((BlockDestructible)this._plateau[2][2]).couleur);
 	}
 
 }
