@@ -24,7 +24,7 @@ public class Plateau {
 		} return false;
 	} 
 
-	public void selectionner(int x, int y, boolean[][] verifRecurence) {
+	public void supprimer(int x, int y, boolean[][] verifRecurence) {
 		//System.out.println(((BlockDestructible)this._plateau[x][y]).couleur);
 		//System.out.println("x = " + x + " ; y = " + y);
 		
@@ -33,7 +33,7 @@ public class Plateau {
 				if (verifRecurence[x][y+1] == false) {
 					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y+1]).couleur)) {
 						verifRecurence[x][y] = true;
-						selectionner(x, y+1, verifRecurence);
+						supprimer(x, y+1, verifRecurence);
 					}					
 				}
 			}
@@ -44,7 +44,7 @@ public class Plateau {
 				if (verifRecurence[x+1][y] == false) {
 					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x+1][y]).couleur)) {
 						verifRecurence[x][y] = true;
-						selectionner(x+1, y, verifRecurence);
+						supprimer(x+1, y, verifRecurence);
 					}				
 				}
 			}		
@@ -55,7 +55,7 @@ public class Plateau {
 				if (verifRecurence[x][y-1] == false) {
 					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y-1]).couleur)) {
 						verifRecurence[x][y] = true;
-						selectionner(x, y-1, verifRecurence);
+						supprimer(x, y-1, verifRecurence);
 					}			
 				}
 			}	
@@ -65,7 +65,7 @@ public class Plateau {
 				if (verifRecurence[x-1][y] == false) {
 					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x-1][y]).couleur)) {
 						verifRecurence[x][y] = true;
-						selectionner(x-1, y, verifRecurence);
+						supprimer(x-1, y, verifRecurence);
 					}			
 				}
 			}
@@ -106,6 +106,14 @@ public class Plateau {
 
 	public Block[][] getPlateau() {
 		return this._plateau;
+	}
+	
+	public int getHauteur() {
+		return this._plateau.length;
+	}
+
+	public int getLargeur() {
+		return this._plateau[0].length;
 	}
 
 	public void setBlock(int x, int y, Block b) {
