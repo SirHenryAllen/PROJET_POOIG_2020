@@ -9,7 +9,8 @@ public class Test {
 		
 		// Construction niveau
 		Niveau v1 = new Niveau(22, 12);
-		v1.ajouterBlock(1);
+		v1.ajouterBlock(0);
+		v1.getPlateau().actualiser();
 		
 		//Affichage niveau
 		AffichageShell.afficherFormatPlateau(v1.getPlateau());
