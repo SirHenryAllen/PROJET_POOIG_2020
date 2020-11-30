@@ -3,6 +3,7 @@ import model.BlockDestructible;
 import model.BlockDestructibleSi;
 import model.BlockFixe;
 import model.Plateau;
+import model.Animaux;
 
 public class AffichageShell {
 
@@ -93,6 +94,21 @@ public class AffichageShell {
 					}
 					if(((BlockDestructible)p.getBlock(j, k)).couleur == 'd') {
 						System.out.print("d  ");
+					}
+				}
+				if (p.getBlock(j, k) instanceof Animaux) {
+					//Affichage des blocks animaux
+					if(((Animaux)p.getBlock(j, k)).getType() == 'a') {
+						System.out.print("+  ");
+					}
+					if(((Animaux)p.getBlock(j, k)).getType() == 'b') {
+						System.out.print("$  ");
+					}
+					if(((Animaux)p.getBlock(j, k)).getType() == 'c') {
+						System.out.print("*  ");
+					}
+					if(((Animaux)p.getBlock(j, k)).getType() == 'd') {
+						System.out.print("°  ");
 					}
 				}
 				//Affichage des blocks destructibles spéciaux

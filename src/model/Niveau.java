@@ -19,20 +19,23 @@ public class Niveau extends Groupe {
 				this._plateau.setBlock(0, b, new BlockFixe('a'));
 			}
 			for (int i = 1 ; i < 3 ; i++) {
-				for (int j = 10 ; j < 21 ; j++) {
+				for (int j = 11 ; j < 21 ; j++) {
 					this._plateau.setBlock(j, i, new BlockDestructible('a'));
 				}
 			}
 			for (int i = 4 ; i < 8 ; i++) {
-				for (int j = 10 ; j < 21 ; j++) {
+				for (int j = 11 ; j < 21 ; j++) {
 					this._plateau.setBlock(j, i, new BlockDestructible('b'));
 				}
 			}
 			for (int i = 9 ; i < 11 ; i++) {
-				for (int j = 10 ; j < 21 ; j++) {
+				for (int j = 11 ; j < 21 ; j++) {
 					this._plateau.setBlock(j, i, new BlockDestructible('c'));
 				}
 			}
+			this._plateau.setBlock(10, 2, new Animaux('a'));
+			this._plateau.setBlock(10, 5, new Animaux('b'));
+			this._plateau.setBlock(10, 8, new Animaux('b'));
 		}
 
 		//Niveau 2

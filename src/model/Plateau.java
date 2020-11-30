@@ -25,71 +25,67 @@ public class Plateau {
 	} 
 
 	public void selectionner(int x, int y, boolean[][] verifRecurence) {
-			//System.out.println(((BlockDestructible)this._plateau[x][y]).couleur);
-			//System.out.println("x = " + x + " ; y = " + y);
-			if (!(isEmpty(x, y+1))) {
-				if (isDestructible(x, y+1)) {
-					if (verifRecurence[x][y+1] == false) {
-						if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y+1]).couleur)) {
-							verifRecurence[x][y] = true;
-							selectionner(x, y+1, verifRecurence);
-						}	
-						//this._plateau[x][y] = null;
-					}
-				}
-			}
-
-			if (!(isEmpty(x+1, y))) {
-				if (isDestructible(x+1, y)) {
-					if (verifRecurence[x+1][y] == false) {
-						if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x+1][y]).couleur)) {
-							verifRecurence[x][y] = true;
-							selectionner(x+1, y, verifRecurence);
-						}
-						//this._plateau[x][y] = null;
-					}
-				}		
-			}
-
-			if (!(isEmpty(x, y-1))) {
-				if (isDestructible(x, y-1)) {
-					if (verifRecurence[x][y-1] == false) {
-						if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y-1]).couleur)) {
-							verifRecurence[x][y] = true;
-							selectionner(x, y-1, verifRecurence);
-						}
-						//this._plateau[x][y] = null;
-					}
-				}	
-			}
-			if (!(isEmpty(x-1, y))) {
-				if (isDestructible(x-1, y)) {
-					if (verifRecurence[x-1][y] == false) {
-						if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x-1][y]).couleur)) {
-							verifRecurence[x][y] = true;
-							selectionner(x-1, y, verifRecurence);
-						}
-						//this._plateau[x][y] = null;
-					}
-				}
-			}
-			this._plateau[x][y] = null;
+		//System.out.println(((BlockDestructible)this._plateau[x][y]).couleur);
+		//System.out.println("x = " + x + " ; y = " + y);
 		
-	}
-
-	public void actualiser() {
-		int check = 1;
-		while(check != 0) {
-			check = 0;
-			for (int i = 0 ; i<this._plateau.length ; i++) {
-				for (int j = 0 ; j<this._plateau.length ; i++) {
-					if (isEmpty(i-1, j)) {
-						this._plateau[i-1][j] = this._plateau[i][j]; 
-						check++;
-					}
+		if (!(isEmpty(x, y+1))) {
+			if (isDestructible(x, y+1)) {
+				if (verifRecurence[x][y+1] == false) {
+					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y+1]).couleur)) {
+						verifRecurence[x][y] = true;
+						selectionner(x, y+1, verifRecurence);
+					}					
 				}
 			}
 		}
+
+		if (!(isEmpty(x+1, y))) {
+			if (isDestructible(x+1, y)) {
+				if (verifRecurence[x+1][y] == false) {
+					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x+1][y]).couleur)) {
+						verifRecurence[x][y] = true;
+						selectionner(x+1, y, verifRecurence);
+					}				
+				}
+			}		
+		}
+
+		if (!(isEmpty(x, y-1))) {
+			if (isDestructible(x, y-1)) {
+				if (verifRecurence[x][y-1] == false) {
+					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y-1]).couleur)) {
+						verifRecurence[x][y] = true;
+						selectionner(x, y-1, verifRecurence);
+					}			
+				}
+			}	
+		}
+		if (!(isEmpty(x-1, y))) {
+			if (isDestructible(x-1, y)) {
+				if (verifRecurence[x-1][y] == false) {
+					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x-1][y]).couleur)) {
+						verifRecurence[x][y] = true;
+						selectionner(x-1, y, verifRecurence);
+					}			
+				}
+			}
+		}
+		this._plateau[x][y] = null;		
+	}
+
+	public void actualiser() {
+			for (int i = 0 ; i<this._plateau.length ; i++) {
+				for (int j = 0 ; j<this._plateau[i].length ; j++) {
+					if (!(this._plateau[i][j] instanceof BlockFixe)) {
+						if (isEmpty(i+1, j)) {
+							this._plateau[i+1][j] = this._plateau[i][j]; 
+							if (!(this._plateau[i-1][j] instanceof BlockFixe)) {
+								this._plateau[i][j] = this._plateau[i-1][j];
+							}
+						}
+					}
+				}
+			}
 	}
 
 	public boolean isDestructible(int x, int y) {
