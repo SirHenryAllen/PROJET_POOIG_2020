@@ -74,18 +74,20 @@ public class Plateau {
 	}
 
 	public void actualiser() {
-			for (int i = 0 ; i<this._plateau.length ; i++) {
-				for (int j = 0 ; j<this._plateau[i].length ; j++) {
-					if (!(this._plateau[i][j] instanceof BlockFixe)) {
-						if (isEmpty(i+1, j)) {
-							this._plateau[i+1][j] = this._plateau[i][j]; 
-							if (!(this._plateau[i-1][j] instanceof BlockFixe)) {
-								this._plateau[i][j] = this._plateau[i-1][j];
-							}
+		// Mise en oeuvre de la "gravité" afin de de ramener les blocs, ne s'appuyant sur rien, vers le bas.
+		for (int i = 0 ; i<this._plateau.length ; i++) {
+			for (int j = 0 ; j<this._plateau[i].length ; j++) {
+				if (!(this._plateau[i][j] instanceof BlockFixe) && this._plateau[i][j] != null) {
+					if (isEmpty(i+1, j)) {
+						this._plateau[i+1][j] = this._plateau[i][j]; 
+						if (!(this._plateau[i-1][j] instanceof BlockFixe)) {
+							this._plateau[i][j] = null;
+							this.actualiser();
 						}
 					}
 				}
 			}
+		}
 	}
 
 	public boolean isDestructible(int x, int y) {
