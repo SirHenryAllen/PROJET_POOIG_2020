@@ -43,7 +43,7 @@ public class Niveau extends Groupe {
 
 		//Niveau 2
 		if (niveau == 2) {
-
+			
 		}
 
 	}
