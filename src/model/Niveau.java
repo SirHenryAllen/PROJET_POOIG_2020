@@ -1,4 +1,5 @@
 package model;
+import java.util.Random;
 
 public class Niveau extends Groupe {
 	private Plateau _plateau;
@@ -8,6 +9,36 @@ public class Niveau extends Groupe {
 	}
 
 	public final void ajouterBlock(int niveau) {
+		//Aléatoire (non recommandé)
+		if (niveau == 0) {
+			for (int a = 0 ; a < 22 ; a++) {
+				this._plateau.setBlock(a, 0, new BlockFixe('a'));
+				this._plateau.setBlock(a, 11, new BlockFixe('a'));
+			}
+			for (int b = 0 ; b < 12 ; b++) {
+				this._plateau.setBlock(21, b, new BlockFixe('a'));
+				this._plateau.setBlock(0, b, new BlockFixe('a'));
+			}			
+			for (int i = 1 ; i < 21 ; i++) {
+				for (int j = 1 ; j < 11 ; j++) {
+					if (new Random().nextInt(6) == 0) {
+						this._plateau.setBlock(i, j, null);
+					}
+					else if (new Random().nextInt(6) == 1) {
+						this._plateau.setBlock(i, j, new BlockDestructible('a'));
+					}
+					else if (new Random().nextInt(6) == 2) {
+						this._plateau.setBlock(i, j, new BlockDestructible('b'));
+					}
+					else if (new Random().nextInt(6) == 3) {
+						this._plateau.setBlock(i, j, new BlockDestructible('c'));
+					}
+					else if (new Random().nextInt(6) == 4) {
+						this._plateau.setBlock(i, j, new BlockDestructible('d'));
+					}
+				}
+			}
+		}
 		//Niveau 1
 		if (niveau == 1) {
 			for (int a = 0 ; a < 22 ; a++) {

@@ -80,10 +80,8 @@ public class Plateau {
 				if (!(this._plateau[i][j] instanceof BlockFixe) && this._plateau[i][j] != null) {
 					if (isEmpty(i+1, j)) {
 						this._plateau[i+1][j] = this._plateau[i][j]; 
-						if (!(this._plateau[i-1][j] instanceof BlockFixe)) {
-							this._plateau[i][j] = null;
-							this.actualiser();
-						}
+						this._plateau[i][j] = null;
+						this.actualiser();
 					}
 				}
 			}
