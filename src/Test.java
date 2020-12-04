@@ -17,12 +17,13 @@ public class Test {
 		
 		// Control Shell
 		ControlShell control = new ControlShell();
+		while(true) {
 		control.selectionner(v1);
 		
 		//Affichage niveau
 		v1.getPlateau().actualiser();
 		AffichageShell.afficherFormatPlateau(v1.getPlateau());
-
+		}
 		//----------
 
 		//System.out.println("Hauteur du plateau = " + v1.getPlateau().getHauteur());
