@@ -7,6 +7,18 @@ public class Plateau {
 		this._plateau = new Block[x][y];
 	}
 	
+	public boolean checkAnimaux() {
+		for (int i = 0 ; i<this._plateau.length ; i++) {
+			for (int j = 0 ; j<this._plateau[i].length ; j++) {
+				if (this._plateau[i][j] instanceof Animaux) {
+					if (!(this._plateau[i+1][j] instanceof BlockFixe)) {
+						return false;
+					}
+				}
+			}
+		}	return true;
+	}
+
 	public boolean ajouter(int x, int y, Block b) {
 		// Ajout du Block b à l'indice x,y : ssi x,y est vide
 		if (isEmpty(x, y)) {
