@@ -9,21 +9,10 @@ public class Test {
 		
 		// Construction niveau
 		Niveau v1 = new Niveau(22, 12);
-		v1.ajouterBlock(0);
+		v1.ajouterBlock(1);
 		v1.getPlateau().actualiser();
 		
-		//Affichage niveau
-		AffichageShell.afficherFormatPlateau(v1.getPlateau());
-		
-		// Control Shell
-		ControlShell control = new ControlShell();
-		while(true) {
-		control.selectionner(v1);
-		
-		//Affichage niveau
-		v1.getPlateau().actualiser();
-		AffichageShell.afficherFormatPlateau(v1.getPlateau());
-		}
+		Jouer.jouerNiveau(v1);
 		//----------
 
 		//System.out.println("Hauteur du plateau = " + v1.getPlateau().getHauteur());
