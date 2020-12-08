@@ -1,19 +1,32 @@
 import model.Niveau;
-//import model.Plateau;
-import view.AffichageShell;
-import control.ControlShell;
-public class Test {
+import Jouer.JoeurGraphique;
+import Jouer.JouerShell;
+import java.util.Scanner;
 
-	public static void main (String[] args) {
-		System.out.println("--------main--------");
+//import view.AffichageShell;
+//import control.ControlShell;
+
+public class Test {
+	private static Scanner _choice = new Scanner(System.in);
+
+	public static void main(String[] args) {
 		
 		// Construction niveau
 		Niveau v1 = new Niveau(22, 12);
-		v1.ajouterBlock(1);
+		v1.ajouterBlock(0);
 		v1.getPlateau().actualiser();
+
+		// Choix du controle
+		System.out.println("Choisir le mode de jeu :\n - 0 : Interface Shell\n - 1 : Affichage Graphique");
+		if (_choice.nextInt() == 0) {
+			JouerShell.jouerNiveau(v1);
+		} else {
+			JoeurGraphique.jouerNiveau(v1);
+		}
 		
-		Jouer.jouerNiveau(v1);
 		//----------
+
+		
 
 		//System.out.println("Hauteur du plateau = " + v1.getPlateau().getHauteur());
 		//System.out.println("Largeur du plateau = " + v1.getPlateau().getLargeur());

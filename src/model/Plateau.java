@@ -37,8 +37,6 @@ public class Plateau {
 	} 
 
 	public void supprimer(int x, int y, boolean[][] verifRecurence) {
-		//System.out.println(((BlockDestructible)this._plateau[x][y]).couleur);
-		//System.out.println("x = " + x + " ; y = " + y);
 		
 		if (!(isEmpty(x, y+1))) {
 			if (isDestructible(x, y+1)) {
