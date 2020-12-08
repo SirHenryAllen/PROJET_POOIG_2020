@@ -1,8 +1,10 @@
+package Jouer;
+
 import control.ControlShell;
 import model.Niveau;
 import view.AffichageShell;
 
-public class Jouer {
+public class JouerShell {
     
     public static void jouerNiveau(Niveau n) {
         ControlShell control = new ControlShell();

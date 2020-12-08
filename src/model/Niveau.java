@@ -55,6 +55,7 @@ public class Niveau extends Groupe {
 			for (int i = 1 ; i < 4 ; i++) {
 				this._plateau.setBlock(13, i, new BlockDestructible('b'));
 			}
+			this._plateau.setBlock(13, 1, new Animaux('a'));
 			this._plateau.setBlock(14, 1, new BlockDestructible('a'));
 			this._plateau.setBlock(14, 2, new BlockDestructible('a'));
 			this._plateau.setBlock(14, 3, new BlockDestructible('b'));
@@ -82,7 +83,49 @@ public class Niveau extends Groupe {
 			this._plateau.setBlock(18, 4, new BlockDestructible('d'));
 			this._plateau.setBlock(19, 4, new BlockDestructible('b'));
 			this._plateau.setBlock(20, 4, new BlockDestructible('b'));
+			
+			this._plateau.setBlock(13, 5, new BlockDestructible('b'));
+			this._plateau.setBlock(14, 5, new BlockDestructible('b'));
+			this._plateau.setBlock(15, 5, new BlockDestructible('c'));
+			this._plateau.setBlock(16, 5, new BlockDestructible('d'));
+			this._plateau.setBlock(17, 5, new BlockDestructible('d'));
+			this._plateau.setBlock(18, 5, new BlockDestructible('b'));
+			this._plateau.setBlock(19, 5, new BlockDestructible('b'));
+			this._plateau.setBlock(20, 5, new BlockDestructible('b'));
 
+			this._plateau.setBlock(13, 6, new BlockDestructible('b'));
+			this._plateau.setBlock(14, 6, new BlockDestructible('c'));
+			this._plateau.setBlock(15, 6, new BlockDestructible('c'));
+			this._plateau.setBlock(16, 6, new BlockDestructible('d'));
+			this._plateau.setBlock(17, 6, new BlockDestructible('c'));
+			this._plateau.setBlock(18, 6, new BlockDestructible('c'));
+			this._plateau.setBlock(19, 6, new BlockDestructible('b'));
+			this._plateau.setBlock(20, 6, new BlockDestructible('c'));
+
+			this._plateau.setBlock(13, 7, new BlockDestructible('d'));
+			this._plateau.setBlock(14, 7, new BlockDestructible('d'));
+			this._plateau.setBlock(15, 7, new BlockDestructible('c'));
+			this._plateau.setBlock(16, 7, new BlockDestructible('b'));
+			this._plateau.setBlock(17, 7, new BlockDestructible('c'));
+			this._plateau.setBlock(18, 7, new BlockDestructible('b'));
+			this._plateau.setBlock(19, 7, new BlockDestructible('b'));
+			this._plateau.setBlock(20, 7, new BlockDestructible('c'));
+
+			this._plateau.setBlock(15, 8, new Animaux('a'));
+			this._plateau.setBlock(16, 8, new BlockDestructible('b'));
+			this._plateau.setBlock(17, 8, new BlockDestructible('c'));
+			this._plateau.setBlock(18, 8, new BlockDestructible('c'));
+			this._plateau.setBlock(19, 8, new BlockDestructible('c'));
+			this._plateau.setBlock(20, 8, new BlockDestructible('c'));
+
+			this._plateau.setBlock(16, 9, new BlockDestructible('b'));
+			this._plateau.setBlock(17, 9, new BlockDestructible('b'));
+			this._plateau.setBlock(18, 9, new BlockDestructible('b'));
+			this._plateau.setBlock(19, 9, new BlockDestructible('b'));
+			this._plateau.setBlock(20, 9, new BlockDestructible('c'));
+
+			this._plateau.setBlock(19, 10, new Animaux('a'));
+			this._plateau.setBlock(20, 10, new BlockDestructible('c'));
 		}
 
 		//Niveau 2
