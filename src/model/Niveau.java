@@ -130,7 +130,9 @@ public class Niveau extends Groupe {
 
 		//Niveau 2
 		if (niveau == 2) {
-			
+			this._plateau.setBlock(11, 2, new BlockDestructible('d'));
+			this._plateau.setBlock(11, 3, new BlockDestructible('d'));
+			this._plateau.setBlock(11, 4, new BlockDestructible('d'));			
 		}
 
 	}

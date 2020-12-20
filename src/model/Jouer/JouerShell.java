@@ -1,4 +1,4 @@
-package Jouer;
+package model.Jouer;
 
 import control.ControlShell;
 import model.Niveau;

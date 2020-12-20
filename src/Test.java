@@ -1,7 +1,8 @@
-import model.Niveau;
-import Jouer.JoeurGraphique;
-import Jouer.JouerShell;
 import java.util.Scanner;
+
+import model.Niveau;
+import model.Jouer.JouerShell;
+import model.Jouer.JoueurGraphique;
 
 //import view.AffichageShell;
 //import control.ControlShell;
@@ -13,7 +14,7 @@ public class Test {
 		
 		// Construction niveau
 		Niveau v1 = new Niveau(22, 12);
-		v1.ajouterBlock(0);
+		v1.ajouterBlock(1);
 		v1.getPlateau().actualiser();
 
 		// Choix du controle
@@ -21,7 +22,7 @@ public class Test {
 		if (_choice.nextInt() == 0) {
 			JouerShell.jouerNiveau(v1);
 		} else {
-			JoeurGraphique.jouerNiveau(v1);
+			JoueurGraphique.jouerNiveau(v1);
 		}
 		
 		//----------

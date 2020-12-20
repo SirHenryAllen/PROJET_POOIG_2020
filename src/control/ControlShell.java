@@ -1,6 +1,5 @@
 package control;
 import java.util.Scanner;
-//import model.Plateau;
 import model.Niveau;
 
 public class ControlShell {

@@ -8,7 +8,7 @@ import model.Plateau;
 import javax.swing.*;
 import java.awt.*;
 
-public class AffichageGraphique extends JFrame{
+public class AffichageGraphique extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel playPanel;
     private JButton[][] pan;
@@ -66,5 +66,9 @@ public class AffichageGraphique extends JFrame{
             }
         }
         this.getContentPane().add(this.playPanel);
+    }
+
+    public JButton getBouton(int x, int y) {
+        return this.pan[x][y];
     }
 }
