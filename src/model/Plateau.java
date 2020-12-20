@@ -1,6 +1,8 @@
 package model;
 
-public class Plateau {
+import Interface.GestionBlock;
+
+public class Plateau implements GestionBlock{
 	private final Block[][] _plateau;
 
 	public Plateau (int x, int y) {
@@ -103,10 +105,6 @@ public class Plateau {
 			return true;
 		} return false;
 	} 
-
-	public boolean controlBlockSpe() {
-		return false;
-	}
 
 	public Block getBlock(int x, int y) {
 		return this._plateau[x][y];
