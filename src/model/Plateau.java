@@ -40,12 +40,18 @@ public class Plateau implements GestionBlock{
 
 	public void supprimer(int x, int y, boolean[][] verifRecurence) {
 		
+		System.out.println(x + ", " + y);
+		if (!isDestructible(x, y)) {
+			return;
+		}
+
 		if (!(isEmpty(x, y+1))) {
 			if (isDestructible(x, y+1)) {
 				if (verifRecurence[x][y+1] == false) {
 					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y+1]).couleur)) {
 						verifRecurence[x][y] = true;
 						supprimer(x, y+1, verifRecurence);
+						System.out.println("Destruction");
 					}					
 				}
 			}
@@ -57,6 +63,7 @@ public class Plateau implements GestionBlock{
 					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x+1][y]).couleur)) {
 						verifRecurence[x][y] = true;
 						supprimer(x+1, y, verifRecurence);
+						System.out.println("Destruction");
 					}				
 				}
 			}		
@@ -68,6 +75,7 @@ public class Plateau implements GestionBlock{
 					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y-1]).couleur)) {
 						verifRecurence[x][y] = true;
 						supprimer(x, y-1, verifRecurence);
+						System.out.println("Destruction");
 					}			
 				}
 			}	
@@ -78,6 +86,7 @@ public class Plateau implements GestionBlock{
 					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x-1][y]).couleur)) {
 						verifRecurence[x][y] = true;
 						supprimer(x-1, y, verifRecurence);
+						System.out.println("Destruction");
 					}			
 				}
 			}
