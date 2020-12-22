@@ -9,9 +9,9 @@ public class ControlShell {
         this._coordonate = new Scanner(System.in);
     }
 
-    public void selectionner(Niveau v) {
+    public void selectionner(Niveau v) {   
         int[] coo = coordonate(v);
-        v.getPlateau().supprimer(coo[0], coo[1], new boolean[v.getPlateau().getHauteur()][v.getPlateau().getLargeur()]);
+        v.getPlateau().supprimer(coo[0], coo[1], new boolean[v.getPlateau().getHauteur()][v.getPlateau().getLargeur()]);     
     }
 
     public int[] coordonate(Niveau v) {
