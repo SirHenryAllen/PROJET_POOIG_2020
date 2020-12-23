@@ -14,7 +14,7 @@ public class Test {
 		
 		// Construction niveau
 		Niveau v1 = new Niveau(22, 12);
-		v1.ajouterBlock(2);
+		v1.ajouterBlock(0);
 		v1.getPlateau().actualiser();
 
 		// Choix du controle

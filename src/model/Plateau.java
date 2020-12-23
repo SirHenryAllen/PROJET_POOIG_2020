@@ -107,6 +107,18 @@ public class Plateau implements GestionBlock{
 				}
 			}
 		}
+		// Décalage vers la gauche
+		for (int i = 1 ; i < this._plateau[0].length-1 ; i++) {
+			if (this._plateau[20][i] == null) {
+				for (int j = 1 ; j < this._plateau.length ; j++) {
+					if (!(this._plateau[j][i+1] instanceof BlockFixe)) {
+						this._plateau[j][i] = this._plateau[j][i+1]; 
+						this._plateau[j][i+1] = null;
+					}
+				}
+				//this.actualiser();
+			}
+		}
 	}
 
 	public boolean isDestructible(int x, int y) {
