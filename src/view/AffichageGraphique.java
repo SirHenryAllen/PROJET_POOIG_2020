@@ -42,35 +42,35 @@ public class AffichageGraphique extends JFrame  {
     }
 
     // Construit le tableau de blocks (visuellement).
-    public void construct(Plateau p) throws IOException {
+    public void construct(Plateau p) {
         for (int i = 0 ; i < this.pan.length ; i++) {
             for (int j = 0 ; j < this.pan.length ; j++) {
                 if (p.getBlock(i+11, j+1) instanceof BlockDestructible) {
                     if (((BlockDestructible)p.getBlock(i+11, j+1)).couleur == 'a') {
-                        this.pan[i][j] = new Carre("Calque1.png", p);  
+                        this.pan[i][j] = new Carre(new Color(249, 238, 3), p);  
                     }
                     else if (((BlockDestructible)p.getBlock(i+11, j+1)).couleur == 'b') {
-                        this.pan[i][j] = new Carre("Calque1.png", p);  
+                        this.pan[i][j] = new Carre(new Color(51, 162, 255), p);  
                     }
                     else if (((BlockDestructible)p.getBlock(i+11, j+1)).couleur == 'c') {
-                        this.pan[i][j] = new Carre("Calque1.png", p);  
+                        this.pan[i][j] = new Carre(new Color(70, 188, 2), p);  
                     }
                     else if (((BlockDestructible)p.getBlock(i+11, j+1)).couleur == 'd') {
-                        this.pan[i][j] = new Carre("Calque1.png", p);
+                        this.pan[i][j] = new Carre(new Color(207, 7, 38), p);
                     }
                 }   
                 else if (p.getBlock(i+11, j+1) instanceof BlockFixe) {
                     if (((BlockFixe)p.getBlock(i+11, j+1)).getType() == 'a') {
-                        this.pan[i][j] = new Carre("Calque1.png", p);
+                        this.pan[i][j] = new Carre(new Color(0, 0, 0), p);
                     }
                 }
                 else if (p.getBlock(i+11, j+1) instanceof Animaux) {
                     if (((Animaux)p.getBlock(i+11, j+1)).getType() == 'a') {
-                        this.pan[i][j] = new Carre("Calque1.png", p); 
+                        this.pan[i][j] = new Carre(new Color(140, 138, 138), p); 
                     }                   
                 }
                 else if (p.getBlock(i+11, j+1) == null) {
-                    this.pan[i][j] = new Carre("Calque1.png", p);  
+                    this.pan[i][j] = new Carre(new Color(255, 255, 255), p);  
                 }
                 this.playPanel.add(this.pan[i][j]);       
             }
@@ -134,14 +134,11 @@ public class AffichageGraphique extends JFrame  {
     public class Carre extends JPanel implements MouseInputListener {
         private static final long serialVersionUID = 1L;
         Plateau p;
-        public BufferedImage image ;
 
         public Carre(String chemin, Plateau p) throws IOException{
-            this.image = ImageIO.read(new File(chemin));
             this.setVisible(true);
             this.setBounds(100, 200, 50, 50);
             this.p = p;
-            this.setPreferredSize(new Dimension(image.getWidth(),image.getHeight()));
             this.addMouseListener(this);
             this.addMouseMotionListener(this);
         }
