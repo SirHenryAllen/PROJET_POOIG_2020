@@ -98,12 +98,12 @@ public class AffichageGraphique extends JFrame  {
                     }
                 }   
                 else if (p.getBlock(i+11, j+1) instanceof BlockSpecial) {
-                    if ((BlockSpecial)p.getBlock(i+11, j+1).getType() == 'a') {
+                    /* if ((BlockSpecial)p.getBlock(i+11, j+1).getType() == 'a') {
                         this.pan[i][j].setBackground(new Color(194, 14, 209));
-                    }
+                    } 
                     else if ((BlockSpecial)p.getBlock(i+11, j+1).getType() == 'b') {
 
-                    }
+                    } */
                 }
                 else if (p.getBlock(i+11, j+1) instanceof BlockFixe) {
                     if (((BlockFixe)p.getBlock(i+11, j+1)).getType() == 'a') {
