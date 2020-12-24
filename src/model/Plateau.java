@@ -94,6 +94,78 @@ public class Plateau implements GestionBlock{
 		this._plateau[x][y] = null;		
 	}
 
+	public void supprimerSi(int x, int y) {//block special qui supprime les blocks destructible adjacents 
+
+		if (!(isEmpty(x, y+1))) {
+			if (isDestructible(x, y+1)) {		
+				this._plateau[x][y+1] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		if (!(isEmpty(x+1, y))) {
+			if (isDestructible(x+1, y)) {		
+				this._plateau[x+1][y] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		if (!(isEmpty(x+1, y+1))) {
+			if (isDestructible(x+1, y+1)) {		
+				this._plateau[x+1][y+1] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		if (!(isEmpty(x-1, y+1))) {
+			if (isDestructible(x-1, y+1)) {		
+				this._plateau[x-1][y+1] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		if (!(isEmpty(x+1, y-1))) {
+			if (isDestructible(x+1, y-1)) {		
+				this._plateau[x+1][y-1] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		if (!(isEmpty(x-1, y-1))) {
+			if (isDestructible(x-1, y-1)) {		
+				this._plateau[x-1][y-1] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		if (!(isEmpty(x, y-1))) {
+			if (isDestructible(x, y-1)) {		
+				this._plateau[x][y-1] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		if (!(isEmpty(x-1, y))) {
+			if (isDestructible(x-1, y)) {		
+				this._plateau[x-1][y] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		this._plateau[x][y] = null;		
+	}
+
+	public void supprimeColone(int x){
+		for(int i =0; i<this._plateau[x].length ; i++){
+			if(this._plateau[x][i] instanceof BlockDestructible || this._plateau[x][i] instanceof BlockDestructibleSi){
+				this._plateau[x][i] = null;
+				System.out.println("Destruction");		
+			}
+		}
+	}
+
+	
+
 	public void actualiser() {
 		// Mise en oeuvre de la "gravité" afin de de ramener les blocs, ne s'appuyant sur rien, vers le bas.
 		for (int i = 0 ; i<this._plateau.length ; i++) {
@@ -125,7 +197,13 @@ public class Plateau implements GestionBlock{
 		if (this._plateau[x][y] instanceof BlockDestructible) {
 			return true;
 		} return false;
-	} 
+	}
+	
+	public boolean isDestructibleSi(int x, int y) {
+		if (this._plateau[x][y] instanceof BlockDestructibleSi) {
+			return true;
+		} return false;
+	}
 
 	public Block getBlock(int x, int y) {
 		return this._plateau[x][y];

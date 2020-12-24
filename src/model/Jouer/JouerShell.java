@@ -16,6 +16,4 @@ public class JouerShell {
         System.out.println("\n      Gagné ! Félicitations !\n");
         AffichageShell.afficherFormatPlateau(n.getPlateau());
     }
-
-
 }
