@@ -3,6 +3,7 @@ package view;
 import model.Animaux;
 import model.BlockDestructible;
 import model.BlockFixe;
+import model.BlockSpecial;
 import model.Plateau;
 
 import javax.swing.JFrame;
@@ -96,6 +97,14 @@ public class AffichageGraphique extends JFrame  {
                         this.pan[i][j].setBackground(new Color(207, 7, 38));
                     }
                 }   
+                else if (p.getBlock(i+11, j+1) instanceof BlockSpecial) {
+                    if ((BlockSpecial)p.getBlock(i+11, j+1).getType() == 'a') {
+                        this.pan[i][j].setBackground(new Color(194, 14, 209));
+                    }
+                    else if ((BlockSpecial)p.getBlock(i+11, j+1).getType() == 'b') {
+
+                    }
+                }
                 else if (p.getBlock(i+11, j+1) instanceof BlockFixe) {
                     if (((BlockFixe)p.getBlock(i+11, j+1)).getType() == 'a') {
                         this.pan[i][j].setBackground(new Color(0, 0, 0));
