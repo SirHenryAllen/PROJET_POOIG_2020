@@ -134,11 +134,11 @@ public class AffichageGraphique extends JFrame  {
     public class Carre extends JPanel implements MouseInputListener {
         private static final long serialVersionUID = 1L;
         Plateau p;
-
-        public Carre(String chemin, Plateau p) throws IOException{
-            this.setVisible(true);
+        
+        public Carre(Color color, Plateau p) {
             this.setBounds(100, 200, 50, 50);
             this.p = p;
+            this.setBackground(color);
             this.addMouseListener(this);
             this.addMouseMotionListener(this);
         }
