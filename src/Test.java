@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import java.io.IOException;
 import model.Niveau;
 import model.Jouer.JouerShell;
 import model.Jouer.JoueurGraphique;
@@ -10,11 +10,11 @@ import model.Jouer.JoueurGraphique;
 public class Test {
 	private static Scanner _choice = new Scanner(System.in);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		// Construction niveau
 		Niveau v1 = new Niveau(22, 12);
-		v1.ajouterBlock(0);
+		v1.ajouterBlock(3);
 		v1.getPlateau().actualiser();
 
 		// Choix du controle

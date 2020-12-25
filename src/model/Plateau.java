@@ -40,12 +40,33 @@ public class Plateau implements GestionBlock{
 
 	public void supprimer(int x, int y, boolean[][] verifRecurence) {
 		
+		System.out.println("supprimer");
+
 		System.out.println(x + ", " + y);
-		if (!isDestructible(x, y)) {
+
+		if (isSpecial(x, y)) {
+			if (((BlockSpecial)this._plateau[x][y]).getType() == 'a') {
+				System.out.println("bombre sup");
+				bombe(x, y);
+				return;
+			}
+			else if (((BlockSpecial)this._plateau[x][y]).getType() == 'b') {
+				supprimeColone(y);
+				this._plateau[x][y] = null;
+				return;
+			}
+			else if (((BlockSpecial)this._plateau[x][y]).getType() == 'c') {
+				supprimeLigne(x);
+				this._plateau[x][y] = null;
+				return;
+			}
+		}
+
+		else if (!isDestructible(x, y)) {
 			return;
 		}
 
-		if (!(isEmpty(x, y+1))) {
+		else if (!(isEmpty(x, y+1))) {
 			if (isDestructible(x, y+1)) {
 				if (verifRecurence[x][y+1] == false) {
 					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y+1]).couleur)) {
@@ -94,6 +115,88 @@ public class Plateau implements GestionBlock{
 		this._plateau[x][y] = null;		
 	}
 
+	public void bombe(int x, int y) {
+		//block special qui supprime les blocks destructible adjacents 
+
+		if (!(isEmpty(x, y+1))) {
+			if (isDestructible(x, y+1)) {		
+				this._plateau[x][y+1] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		if (!(isEmpty(x+1, y))) {
+			if (isDestructible(x+1, y)) {		
+				this._plateau[x+1][y] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		if (!(isEmpty(x+1, y+1))) {
+			if (isDestructible(x+1, y+1)) {		
+				this._plateau[x+1][y+1] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		if (!(isEmpty(x-1, y+1))) {
+			if (isDestructible(x-1, y+1)) {		
+				this._plateau[x-1][y+1] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		if (!(isEmpty(x+1, y-1))) {
+			if (isDestructible(x+1, y-1)) {		
+				this._plateau[x+1][y-1] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		if (!(isEmpty(x-1, y-1))) {
+			if (isDestructible(x-1, y-1)) {		
+				this._plateau[x-1][y-1] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		if (!(isEmpty(x, y-1))) {
+			if (isDestructible(x, y-1)) {		
+				this._plateau[x][y-1] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		if (!(isEmpty(x-1, y))) {
+			if (isDestructible(x-1, y)) {		
+				this._plateau[x-1][y] = null;		
+				System.out.println("Destruction");		
+			}					
+		}
+
+		this._plateau[x][y] = null;		
+	}
+
+	public void supprimeColone(int y){
+		for(int i = 0; i<this._plateau.length ; i++){
+			if(this._plateau[i][y] instanceof BlockDestructible || this._plateau[i][y] instanceof BlockDestructibleSi){
+				this._plateau[i][y] = null;
+				System.out.println("Destruction");		
+			}
+		}
+	}
+
+	public void supprimeLigne(int x){
+		for(int i = 0; i<this._plateau[x].length ; i++){
+			if(this._plateau[x][i] instanceof BlockDestructible || this._plateau[x][i] instanceof BlockDestructibleSi){
+				this._plateau[x][i] = null;
+				System.out.println("Destruction");		
+			}
+		}
+	}
+
+	
+
 	public void actualiser() {
 		// Mise en oeuvre de la "gravité" afin de de ramener les blocs, ne s'appuyant sur rien, vers le bas.
 		for (int i = 0 ; i<this._plateau.length ; i++) {
@@ -125,7 +228,21 @@ public class Plateau implements GestionBlock{
 		if (this._plateau[x][y] instanceof BlockDestructible) {
 			return true;
 		} return false;
-	} 
+	}
+	
+	public boolean isDestructibleSi(int x, int y) {
+		if (this._plateau[x][y] instanceof BlockDestructibleSi) {
+			return true;
+		} return false;
+	}
+
+	public boolean isSpecial(int x, int y) {
+		System.out.println("isSpecial ?");
+		if (this._plateau[x][y] instanceof BlockSpecial) {
+			System.out.println("isSpecial");
+			return true;
+		} return false;
+	}
 
 	public Block getBlock(int x, int y) {
 		return this._plateau[x][y];

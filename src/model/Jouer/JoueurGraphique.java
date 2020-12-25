@@ -2,10 +2,11 @@ package model.Jouer;
 
 import model.Niveau;
 import view.AffichageGraphique;
+import java.io.IOException;
 
 public class JoueurGraphique {
 
-    public static void jouerNiveau(Niveau n) {
+    public static void jouerNiveau(Niveau n) throws IOException{
         
         //Construction de l'affichage
         AffichageGraphique visuel = new AffichageGraphique(n.getPlateau());
