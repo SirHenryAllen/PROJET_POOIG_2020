@@ -1,4 +1,4 @@
-package model;
+package model.Block;
 
 public class BlockDestructible extends Block {
 	public final char couleur;	//	couleur du block

@@ -1,5 +1,12 @@
 package model;
 
+import model.Block.Block;
+import model.Block.Animaux;
+import model.Block.BlockFixe;
+import model.Block.BlockSpecial;
+import model.Block.BlockDestructible;
+import model.Block.BlockDestructibleSi;
+
 import Interface.GestionBlock;
 
 public class Plateau implements GestionBlock{

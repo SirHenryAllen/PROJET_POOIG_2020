@@ -1,9 +1,9 @@
 package view;
-import model.BlockDestructible;
-import model.BlockDestructibleSi;
-import model.BlockFixe;
+import model.Block.BlockDestructible;
+import model.Block.BlockDestructibleSi;
+import model.Block.BlockFixe;
 import model.Plateau;
-import model.Animaux;
+import model.Block.Animaux;
 
 public class AffichageShell {
 
