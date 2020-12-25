@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
 
 import model.Plateau;
-import view.AffichageGraphique;
+import view.Jeu;
 
 import java.awt.Color;
 
@@ -17,9 +17,9 @@ public class ControlGraphique {
     public static class Carre extends JPanel implements MouseInputListener {
         private static final long serialVersionUID = 1L;
         Plateau p;
-        AffichageGraphique affichage;
+        Jeu affichage;
         
-        public Carre(Color color, Plateau p, AffichageGraphique a) {
+        public Carre(Color color, Plateau p, Jeu a) {
             this.setBounds(100, 200, 50, 50);
             this.p = p;
             this.affichage = a;

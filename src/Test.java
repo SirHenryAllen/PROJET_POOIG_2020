@@ -3,6 +3,7 @@ import java.io.IOException;
 import model.Niveau;
 import model.Jouer.JouerShell;
 import model.Jouer.JoueurGraphique;
+import view.Profil;
 
 //import view.AffichageShell;
 //import control.ControlShell;
@@ -12,6 +13,9 @@ public class Test {
 
 	public static void main(String[] args) throws IOException {
 		
+		Profil p = new Profil();
+		p.setVisible(true);
+
 		// Construction niveau
 		Niveau v1 = new Niveau(22, 12);
 		v1.ajouterBlock(3);
