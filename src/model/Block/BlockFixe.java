@@ -1,4 +1,4 @@
-package model;
+package model.Block;
 
 public class BlockFixe extends Block {
 	private char _type;	// type de block fixe

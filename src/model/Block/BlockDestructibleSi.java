@@ -1,4 +1,4 @@
-package model;
+package model.Block;
 
 public class BlockDestructibleSi extends Block {
     

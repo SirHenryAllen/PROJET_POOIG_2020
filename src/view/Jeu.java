@@ -1,34 +1,24 @@
 package view;
 
-import model.Animaux;
-import model.BlockDestructible;
-import model.BlockFixe;
-import model.BlockSpecial;
+import model.Block.Animaux;
+import model.Block.BlockDestructible;
+import model.Block.BlockFixe;
+import model.Block.BlockSpecial;
 import model.Plateau;
-import control.ControlGraphique;
 import control.ControlGraphique.Carre;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.event.MouseInputListener;
 
 import java.awt.Color;
-import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 
-public class AffichageGraphique extends JFrame  {
+public class Jeu extends JFrame  {
     private static final long serialVersionUID = 1L;
     private JPanel playPanel;
     private Carre[][] pan;
 
-    public AffichageGraphique(Plateau p) throws IOException{
+    public Jeu(Plateau p) {
 
         this.setTitle("PetRescue");
         this.setSize(800, 600);

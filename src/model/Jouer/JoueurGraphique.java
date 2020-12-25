@@ -1,7 +1,7 @@
 package model.Jouer;
 
 import model.Niveau;
-import view.AffichageGraphique;
+import view.Jeu;
 import java.io.IOException;
 
 public class JoueurGraphique {
@@ -9,7 +9,7 @@ public class JoueurGraphique {
     public static void jouerNiveau(Niveau n) throws IOException{
         
         //Construction de l'affichage
-        AffichageGraphique visuel = new AffichageGraphique(n.getPlateau());
+        Jeu visuel = new Jeu(n.getPlateau());
         visuel.setVisible(true);
         /* javax.swing.SwingUtilities.invokeLater(new Runnable() {
             

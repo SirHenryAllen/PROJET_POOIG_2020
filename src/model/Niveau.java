@@ -1,5 +1,11 @@
 package model;
+
 import java.util.Random;
+
+import model.Block.Animaux;
+import model.Block.BlockDestructible;
+import model.Block.BlockFixe;
+import model.Block.BlockSpecial;
 
 public class Niveau extends Groupe {
 	private Plateau _plateau;
