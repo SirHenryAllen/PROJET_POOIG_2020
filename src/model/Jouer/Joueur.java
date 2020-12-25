@@ -3,6 +3,7 @@ package model.Jouer;
 import java.io.Serializable;
 
 public class Joueur implements Serializable {
+    private static final long serialVersionUID = 3913462105332499632L;
     private final String nom;
     private int niveau;
 
