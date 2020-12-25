@@ -60,6 +60,17 @@ public class AffichageGraphique extends JFrame  {
                         this.pan[i][j] = new Carre(new Color(207, 7, 38), p);
                     }
                 }   
+                else if (p.getBlock(i+11, j+1) instanceof BlockSpecial) {
+                    if (((BlockSpecial) p.getBlock(i+11, j+1)).getType() == 'a') {
+                        this.pan[i][j] = new Carre(new Color(194, 14, 209), p);
+                    } 
+                    else if (((BlockSpecial) p.getBlock(i + 11, j + 1)).getType() == 'b') {
+                        this.pan[i][j] = new Carre(new Color(16, 232, 209), p);
+                    }
+                    else if (((BlockSpecial) p.getBlock(i + 11, j + 1)).getType() == 'c') {
+                        this.pan[i][j] = new Carre(new Color(232, 140, 16), p);
+                    }
+                }
                 else if (p.getBlock(i+11, j+1) instanceof BlockFixe) {
                     if (((BlockFixe)p.getBlock(i+11, j+1)).getType() == 'a') {
                         this.pan[i][j] = new Carre(new Color(0, 0, 0), p);
@@ -98,12 +109,15 @@ public class AffichageGraphique extends JFrame  {
                     }
                 }   
                 else if (p.getBlock(i+11, j+1) instanceof BlockSpecial) {
-                    /* if ((BlockSpecial)p.getBlock(i+11, j+1).getType() == 'a') {
+                    if (((BlockSpecial) p.getBlock(i+11, j+1)).getType() == 'a') {
                         this.pan[i][j].setBackground(new Color(194, 14, 209));
                     } 
-                    else if ((BlockSpecial)p.getBlock(i+11, j+1).getType() == 'b') {
-
-                    } */
+                    else if (((BlockSpecial) p.getBlock(i + 11, j + 1)).getType() == 'b') {
+                        this.pan[i][j].setBackground(new Color(16, 232, 209));
+                    }
+                    else if (((BlockSpecial) p.getBlock(i+11, j+1)).getType() == 'c') {
+                        this.pan[i][j].setBackground(new Color(232, 140, 16));
+                    } 
                 }
                 else if (p.getBlock(i+11, j+1) instanceof BlockFixe) {
                     if (((BlockFixe)p.getBlock(i+11, j+1)).getType() == 'a') {

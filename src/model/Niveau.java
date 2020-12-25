@@ -21,6 +21,7 @@ public class Niveau extends Groupe {
 		switch(niveau) {
 			case 1: levelOne(); break;
 			case 2: levelTwo(); break;
+			case 3: levelThree(); break;
 			default: random(); break;
 		}
 	}
@@ -216,6 +217,141 @@ public class Niveau extends Groupe {
 		this._plateau.setBlock(20, 8, new BlockDestructible('d'));
 		this._plateau.setBlock(20, 9, new BlockDestructible('b'));
 		this._plateau.setBlock(20, 10, new BlockDestructible('b'));
+	}
+
+	public final void levelThree() {
+		this._plateau.setBlock(10, 2, new BlockDestructible('c'));
+		this._plateau.setBlock(10, 3, new BlockDestructible('b'));
+		this._plateau.setBlock(10, 4, new BlockDestructible('b'));
+		this._plateau.setBlock(11, 5, new BlockDestructible('a'));
+		this._plateau.setBlock(11, 7, new BlockDestructible('b'));
+		this._plateau.setBlock(11, 3, new BlockDestructible('b'));
+
+		this._plateau.setBlock(10, 7, new BlockDestructible('b'));
+		this._plateau.setBlock(10, 8, new BlockDestructible('c'));
+		this._plateau.setBlock(10, 9, new BlockDestructible('b'));
+		this._plateau.setBlock(11, 8, new BlockDestructible('b'));
+		this._plateau.setBlock(11, 9, new BlockDestructible('c'));
+		this._plateau.setBlock(10, 10, new BlockDestructible('b'));
+
+		this._plateau.setBlock(9, 8, new BlockDestructible('b'));
+		this._plateau.setBlock(9, 9, new BlockDestructible('d'));
+		this._plateau.setBlock(9, 10, new BlockDestructible('b'));
+
+		this._plateau.setBlock(9, 4, new BlockDestructible('b'));
+		this._plateau.setBlock(9, 7, new BlockDestructible('c'));
+		this._plateau.setBlock(9, 3, new BlockDestructible('a'));
+
+		this._plateau.setBlock(11, 1, new BlockDestructible('d'));
+		this._plateau.setBlock(11, 2, new BlockDestructible('c'));
+		this._plateau.setBlock(11, 3, new BlockDestructible('b'));
+		this._plateau.setBlock(11, 4, new BlockDestructible('a'));
+		this._plateau.setBlock(11, 5, new BlockDestructible('d'));
+		this._plateau.setBlock(11, 6, new BlockDestructible('b'));
+		this._plateau.setBlock(11, 7, new BlockDestructible('d'));
+		this._plateau.setBlock(11, 8, new Animaux('a'));
+		this._plateau.setBlock(11, 9, new BlockDestructible('b'));
+		this._plateau.setBlock(11, 10, new BlockDestructible('d'));
+
+		this._plateau.setBlock(12, 1, new BlockDestructible('b'));
+		this._plateau.setBlock(12, 2, new BlockDestructible('b'));
+		this._plateau.setBlock(12, 3, new BlockDestructible('d'));
+		this._plateau.setBlock(12, 4, new BlockDestructible('d'));
+		this._plateau.setBlock(12, 5, new BlockDestructible('c'));
+		this._plateau.setBlock(12, 6, new BlockDestructible('b'));
+		this._plateau.setBlock(12, 7, new BlockDestructible('d'));
+		this._plateau.setBlock(12, 8, new BlockDestructible('d'));
+		this._plateau.setBlock(12, 9, new BlockDestructible('c'));
+		this._plateau.setBlock(12, 10, new BlockDestructible('b'));
+
+		this._plateau.setBlock(13, 1, new BlockDestructible('c'));
+		this._plateau.setBlock(13, 2, new BlockDestructible('a'));
+		this._plateau.setBlock(13, 3, new Animaux('a'));
+		this._plateau.setBlock(13, 4, new BlockDestructible('c'));
+		this._plateau.setBlock(13, 5, new BlockDestructible('a'));
+		this._plateau.setBlock(13, 6, new BlockDestructible('a'));
+		this._plateau.setBlock(13, 7, new BlockDestructible('d'));
+		this._plateau.setBlock(13, 8, new BlockDestructible('b'));
+		this._plateau.setBlock(13, 9, new BlockDestructible('d'));
+		this._plateau.setBlock(13, 10, new BlockDestructible('d'));
+
+		this._plateau.setBlock(14, 1, new BlockDestructible('d'));
+		this._plateau.setBlock(14, 2, new BlockDestructible('b'));
+		this._plateau.setBlock(14, 3, new BlockDestructible('b'));
+		this._plateau.setBlock(14, 4, new BlockSpecial('b'));
+		this._plateau.setBlock(14, 5, new BlockDestructible('d'));
+		this._plateau.setBlock(14, 6, new BlockDestructible('b'));
+		this._plateau.setBlock(14, 7, new BlockDestructible('b'));
+		this._plateau.setBlock(14, 8, new Animaux('a'));
+		this._plateau.setBlock(14, 9, new BlockDestructible('d'));
+		this._plateau.setBlock(14, 10, new BlockSpecial('c'));
+
+		this._plateau.setBlock(15, 1, new BlockDestructible('b'));
+		this._plateau.setBlock(15, 2, new BlockDestructible('c'));
+		this._plateau.setBlock(15, 3, new BlockDestructible('b'));
+		this._plateau.setBlock(15, 4, new BlockDestructible('b'));
+		this._plateau.setBlock(15, 5, new BlockDestructible('a'));
+		this._plateau.setBlock(15, 6, new BlockDestructible('c'));
+		this._plateau.setBlock(15, 7, new BlockDestructible('a'));
+		this._plateau.setBlock(15, 8, new BlockDestructible('d'));
+		this._plateau.setBlock(15, 9, new BlockDestructible('d'));
+		this._plateau.setBlock(15, 10, new BlockDestructible('c'));
+
+		this._plateau.setBlock(16, 1, new BlockDestructible('c'));
+		this._plateau.setBlock(16, 2, new BlockDestructible('b'));
+		this._plateau.setBlock(16, 3, new BlockDestructible('c'));
+		this._plateau.setBlock(16, 4, new BlockDestructible('a'));
+		this._plateau.setBlock(16, 5, new BlockDestructible('d'));
+		this._plateau.setBlock(16, 6, new BlockDestructible('b'));
+		this._plateau.setBlock(16, 7, new BlockSpecial('a'));
+		this._plateau.setBlock(16, 8, new BlockDestructible('a'));
+		this._plateau.setBlock(16, 9, new BlockDestructible('b'));
+		this._plateau.setBlock(16, 10, new BlockDestructible('b'));
+
+		this._plateau.setBlock(17, 1, new BlockDestructible('a'));
+		this._plateau.setBlock(17, 2, new BlockDestructible('c'));
+		this._plateau.setBlock(17, 3, new BlockDestructible('c'));
+		this._plateau.setBlock(17, 4, new BlockDestructible('a'));
+		this._plateau.setBlock(17, 5, new BlockDestructible('b'));
+		this._plateau.setBlock(17, 6, new BlockDestructible('d'));
+		this._plateau.setBlock(17, 7, new BlockDestructible('a'));
+		this._plateau.setBlock(17, 8, new BlockDestructible('a'));
+		this._plateau.setBlock(17, 9, new BlockDestructible('c'));
+		this._plateau.setBlock(17, 10, new BlockDestructible('a'));
+
+		this._plateau.setBlock(18, 1, new BlockDestructible('b'));
+		this._plateau.setBlock(18, 2, new BlockDestructible('d'));
+		this._plateau.setBlock(18, 3, new BlockDestructible('a'));
+		this._plateau.setBlock(18, 4, new BlockDestructible('d'));
+		this._plateau.setBlock(18, 5, new BlockDestructible('b'));
+		this._plateau.setBlock(18, 6, new BlockDestructible('b'));
+		this._plateau.setBlock(18, 7, new BlockDestructible('d'));
+		this._plateau.setBlock(18, 8, new BlockDestructible('b'));
+		this._plateau.setBlock(18, 9, new BlockDestructible('b'));
+		this._plateau.setBlock(18, 10, new BlockDestructible('c'));
+		
+		this._plateau.setBlock(19, 1, new BlockDestructible('c'));
+		this._plateau.setBlock(19, 2, new BlockDestructible('d'));
+		this._plateau.setBlock(19, 3, new BlockSpecial('c'));
+		this._plateau.setBlock(19, 4, new BlockDestructible('a'));
+		this._plateau.setBlock(19, 5, new BlockDestructible('a'));
+		this._plateau.setBlock(19, 6, new BlockDestructible('b'));
+		this._plateau.setBlock(19, 7, new BlockDestructible('d'));
+		this._plateau.setBlock(19, 8, new BlockDestructible('c'));
+		this._plateau.setBlock(19, 9, new BlockDestructible('c'));
+		this._plateau.setBlock(19, 10, new BlockDestructible('a'));
+
+		this._plateau.setBlock(20, 1, new BlockDestructible('c'));
+		this._plateau.setBlock(20, 2, new BlockDestructible('d'));
+		this._plateau.setBlock(20, 3, new BlockDestructible('b'));
+		this._plateau.setBlock(20, 4, new BlockDestructible('c'));
+		this._plateau.setBlock(20, 5, new BlockDestructible('a'));
+		this._plateau.setBlock(20, 6, new BlockDestructible('c'));
+		this._plateau.setBlock(20, 7, new BlockDestructible('d'));
+		this._plateau.setBlock(20, 8, new BlockDestructible('d'));
+		this._plateau.setBlock(20, 9, new BlockDestructible('a'));
+		this._plateau.setBlock(20, 10, new BlockSpecial('b'));
+		
 	}
 
 	public final void random() {
