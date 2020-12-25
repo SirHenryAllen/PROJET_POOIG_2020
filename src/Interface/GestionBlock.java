@@ -1,6 +1,6 @@
 package Interface;
 
-import model.Block;
+import model.Block.Block;
 
 public interface GestionBlock {
 

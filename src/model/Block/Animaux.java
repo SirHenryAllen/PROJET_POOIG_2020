@@ -1,4 +1,4 @@
-package model;
+package model.Block;
 
 public class Animaux extends Block {
 	private final char _type;	// Type d'animal

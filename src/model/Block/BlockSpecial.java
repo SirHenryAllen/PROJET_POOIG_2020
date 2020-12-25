@@ -1,4 +1,4 @@
-package model;
+package model.Block;
 
 public class BlockSpecial extends Block {
     private final char _type;
