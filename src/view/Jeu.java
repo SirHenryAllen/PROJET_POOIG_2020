@@ -6,8 +6,13 @@ import model.Block.BlockFixe;
 import model.Block.BlockSpecial;
 import model.Plateau;
 import control.ControlGraphique.Carre;
+import java.awt.event.ActionEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import java.awt.Color;
@@ -17,8 +22,22 @@ public class Jeu extends JFrame  {
     private static final long serialVersionUID = 1L;
     private JPanel playPanel;
     private Carre[][] pan;
+    JMenuBar menubar ;
+    JMenu file ;
 
     public Jeu(Plateau p) {
+        JButton replay = new JButton("replay");
+        JButton quitter = new JButton("quitter");
+        JMenuBar menubar = new JMenuBar() ;
+        this.setJMenuBar(menubar);
+        menubar.add(quitter) ;
+        menubar.add(replay) ;
+        quitter.addActionListener((ActionEvent e)->{
+            System.exit(0);
+        });
+        replay.addActionListener((ActionEvent e)->{
+            System.exit(0);
+        });
 
         this.setTitle("PetRescue");
         this.setSize(800, 600);
