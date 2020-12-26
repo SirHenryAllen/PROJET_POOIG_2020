@@ -1,6 +1,10 @@
-package Menu ;
+package Menu;
+
+import model.Groupe;
 import model.Niveau;
 import model.Jouer.JoueurGraphique;
+import view.ChooseLevelView;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -26,9 +30,12 @@ public class MenuPrincipal extends JFrame {
 	ImagePane imagePane ;
 	MenuModel model ;
 	JMenuBar bar ;
+	private Groupe _groupe; 
 	
-	public MenuPrincipal(MenuModel model) {
-		this.model = model;   
+	public MenuPrincipal(MenuModel model, Groupe g) {
+		//View
+		this.model = model; 
+		this._groupe = g;  
 		this.setTitle("PetRescue");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
@@ -42,21 +49,9 @@ public class MenuPrincipal extends JFrame {
 		bar.add(setting);
 		bar.add(profil);
 		this.setJMenuBar(bar);
-
 		this.setContentPane(imagePane);
 
-		play.addActionListener((ActionEvent e)->{
-			Niveau v1 = new Niveau(22, 12);
-			v1.ajouterBlock(3);
-			v1.getPlateau().actualiser();
-			try {
-				JoueurGraphique.jouerNiveau(v1);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-
-		});
+		play.addActionListener((ActionEvent e)->{new ChooseLevelView(this._groupe);});
         
     }
  
