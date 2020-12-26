@@ -1,4 +1,6 @@
 package Menu ;
+import model.Niveau;
+import model.Jouer.JoueurGraphique;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -9,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.io.IOException;
 import java.util.Timer;
 
 import javax.swing.JButton;
@@ -17,7 +20,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.undo.UndoManager;
 
-public class MenuPrincipal extends JFrame{
+public class MenuPrincipal extends JFrame {
 
 	JButton play , setting , profil ;
 	ImagePane imagePane ;
@@ -41,6 +44,19 @@ public class MenuPrincipal extends JFrame{
 		this.setJMenuBar(bar);
 
 		this.setContentPane(imagePane);
+
+		play.addActionListener((ActionEvent e)->{
+			Niveau v1 = new Niveau(22, 12);
+			v1.ajouterBlock(3);
+			v1.getPlateau().actualiser();
+			try {
+				JoueurGraphique.jouerNiveau(v1);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
+		});
         
     }
  
