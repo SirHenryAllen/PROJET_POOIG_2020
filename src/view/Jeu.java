@@ -1,5 +1,7 @@
 package view;
 
+import model.Niveau;
+import model.Jouer.JoueurGraphique;
 import model.Block.Animaux;
 import model.Block.BlockDestructible;
 import model.Block.BlockFixe;
@@ -7,6 +9,7 @@ import model.Block.BlockSpecial;
 import model.Plateau;
 import control.ControlGraphique.Carre;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,18 +28,29 @@ public class Jeu extends JFrame  {
     JMenuBar menubar ;
     JMenu file ;
 
-    public Jeu(Plateau p) {
+    public Jeu(Plateau p) throws IOException{
         JButton replay = new JButton("replay");
         JButton quitter = new JButton("quitter");
         JMenuBar menubar = new JMenuBar() ;
         this.setJMenuBar(menubar);
         menubar.add(quitter) ;
         menubar.add(replay) ;
+        
         quitter.addActionListener((ActionEvent e)->{
             System.exit(0);
         });
+       
         replay.addActionListener((ActionEvent e)->{
-            System.exit(0);
+            Niveau v1 = new Niveau(22, 12);
+			v1.ajouterBlock(3);
+			v1.getPlateau().actualiser();
+			try {
+				JoueurGraphique.jouerNiveau(v1);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
         });
 
         this.setTitle("PetRescue");
