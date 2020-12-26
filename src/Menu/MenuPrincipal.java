@@ -26,7 +26,7 @@ import javax.swing.undo.UndoManager;
 
 public class MenuPrincipal extends JFrame {
 	private static final long serialVersionUID = -3909496315491074971L;
-	JButton play, setting, profil;
+	JButton play, setting, profil, dev;
 	ImagePane imagePane ;
 	MenuModel model ;
 	JMenuBar bar ;
@@ -40,14 +40,16 @@ public class MenuPrincipal extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.imagePane = new ImagePane();
-		this.play = new JButton("PLAY") ;
-		this.setting = new JButton("SETTING") ;
-		this.profil = new JButton("PROFIL") ;
+		this.play = new JButton("PLAY");
+		this.setting = new JButton("SETTING");
+		this.profil = new JButton("PROFIL");
+		this.dev = new JButton("MODE DEVELOPPEUR");
 		JMenuBar bar = new JMenuBar();
         bar.setLayout(new GridLayout(1,3));
 		bar.add(play);
 		bar.add(setting);
 		bar.add(profil);
+		bar.add(dev);
 		this.setJMenuBar(bar);
 		this.setContentPane(imagePane);
 
