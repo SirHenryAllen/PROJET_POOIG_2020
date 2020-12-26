@@ -1,3 +1,4 @@
+package test ;
 import java.util.Scanner;
 import java.io.IOException;
 import model.Niveau;
@@ -30,9 +31,6 @@ public class Test {
 		}
 		
 		//----------
-
-		
-
 		//System.out.println("Hauteur du plateau = " + v1.getPlateau().getHauteur());
 		//System.out.println("Largeur du plateau = " + v1.getPlateau().getLargeur());
 		//v1.getPlateau().supprimer(17, 1, new boolean[22][12]);

@@ -1,5 +1,6 @@
 package Menu ;
 
+import model.Niveau;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -42,9 +43,12 @@ public class MenuPrincipal extends JFrame{
 		this.setJMenuBar(bar);
 
 		this.setContentPane(imagePane);
-
-
-        
+		play.addActionListener(
+			(ActionEvent e) ->{
+				Niveau v1 = new Niveau(22, 12);
+				v1.ajouterBlock(3);
+				v1.getPlateau().actualiser();
+			});
     }
  
     public class ImagePane extends JPanel{
