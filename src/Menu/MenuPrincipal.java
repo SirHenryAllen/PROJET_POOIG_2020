@@ -21,15 +21,15 @@ import javax.swing.JPanel;
 import javax.swing.undo.UndoManager;
 
 public class MenuPrincipal extends JFrame {
-
-	JButton play , setting , profil ;
+	private static final long serialVersionUID = -3909496315491074971L;
+	JButton play, setting, profil;
 	ImagePane imagePane ;
 	MenuModel model ;
 	JMenuBar bar ;
 	
 	public MenuPrincipal(MenuModel model) {
 		this.model = model;   
-		this.setTitle("PetRescueProut");
+		this.setTitle("PetRescue");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.imagePane = new ImagePane();
@@ -61,8 +61,9 @@ public class MenuPrincipal extends JFrame {
     }
  
     public class ImagePane extends JPanel{
+		private static final long serialVersionUID = -5943567091824810243L;
 
-        public ImagePane() {
+		public ImagePane() {
             this.setPreferredSize(new Dimension(1024,768));  
         }
         

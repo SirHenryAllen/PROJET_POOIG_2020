@@ -11,7 +11,7 @@ public class Test {
 			
 		MenuModel model ;
 		try {
-			model = new MenuModel("C:\\Users\\Sunay\\eclipse-workspace\\MenuM\\backgroundMenu.png");
+			model = new MenuModel("/home/sha/Projets/PROJET_POOIG_2020/src/Menu/backgroundMenu.png");
 			MenuPrincipal view = new MenuPrincipal(model);
 			view.pack();
 			view.setVisible(true);
