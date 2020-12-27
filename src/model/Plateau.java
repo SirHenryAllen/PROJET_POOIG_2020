@@ -45,6 +45,67 @@ public class Plateau implements GestionBlock{
 		} return false;
 	} 
 
+	public boolean[][] preSupprimer(int x, int y, boolean[][] verifRecurence) {
+		if (isSpecial(x, y)) {
+			if (((BlockSpecial)this._plateau[x][y]).getType() == 'a') {
+				return preBombe(x, y, verifRecurence);
+			}
+			else if (((BlockSpecial)this._plateau[x][y]).getType() == 'b') {
+				verifRecurence[x][y] = true;
+				return preSupprimeColonne(y, verifRecurence);
+			}
+			else if (((BlockSpecial)this._plateau[x][y]).getType() == 'c') {
+				verifRecurence[x][y] = true;
+				return preSupprimeLigne(x, verifRecurence);
+			}
+		}
+
+		else if (!(isEmpty(x, y+1))) {
+			if (isDestructible(x, y+1)) {
+				if (!verifRecurence[x][y+1]) {
+					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y+1]).couleur)) {
+						verifRecurence[x][y] = true;
+						verifRecurence = preSupprimer(x, y+1, verifRecurence);
+					}					
+				}
+			}
+		}
+
+		if (!(isEmpty(x+1, y))) {
+			if (isDestructible(x+1, y)) {
+				if (!verifRecurence[x+1][y]) {
+					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x+1][y]).couleur)) {
+						verifRecurence[x][y] = true;
+						verifRecurence = preSupprimer(x+1, y, verifRecurence);
+					}				
+				}
+			}		
+		}
+
+		if (!(isEmpty(x, y-1))) {
+			if (isDestructible(x, y-1)) {
+				if (!verifRecurence[x][y-1]) {
+					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y-1]).couleur)) {
+						verifRecurence[x][y] = true;
+						verifRecurence = preSupprimer(x, y-1, verifRecurence);
+					}			
+				}
+			}	
+		}
+		if (!(isEmpty(x-1, y))) {
+			if (isDestructible(x-1, y)) {
+				if (!verifRecurence[x-1][y]) {
+					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x-1][y]).couleur)) {
+						verifRecurence[x][y] = true;
+						verifRecurence = preSupprimer(x-1, y, verifRecurence);
+					}			
+				}
+			}
+		}	
+		verifRecurence[x][y] = true;
+		return verifRecurence;
+	}
+
 	public void supprimer(int x, int y, boolean[][] verifRecurence) {
 		
 		System.out.println("supprimer");
@@ -58,7 +119,7 @@ public class Plateau implements GestionBlock{
 				return;
 			}
 			else if (((BlockSpecial)this._plateau[x][y]).getType() == 'b') {
-				supprimeColone(y);
+				supprimeColonne(y);
 				this._plateau[x][y] = null;
 				return;
 			}
@@ -75,7 +136,7 @@ public class Plateau implements GestionBlock{
 
 		else if (!(isEmpty(x, y+1))) {
 			if (isDestructible(x, y+1)) {
-				if (verifRecurence[x][y+1] == false) {
+				if (!verifRecurence[x][y+1]) {
 					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y+1]).couleur)) {
 						verifRecurence[x][y] = true;
 						supprimer(x, y+1, verifRecurence);
@@ -87,7 +148,7 @@ public class Plateau implements GestionBlock{
 
 		if (!(isEmpty(x+1, y))) {
 			if (isDestructible(x+1, y)) {
-				if (verifRecurence[x+1][y] == false) {
+				if (!verifRecurence[x+1][y]) {
 					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x+1][y]).couleur)) {
 						verifRecurence[x][y] = true;
 						supprimer(x+1, y, verifRecurence);
@@ -99,7 +160,7 @@ public class Plateau implements GestionBlock{
 
 		if (!(isEmpty(x, y-1))) {
 			if (isDestructible(x, y-1)) {
-				if (verifRecurence[x][y-1] == false) {
+				if (!verifRecurence[x][y-1]) {
 					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y-1]).couleur)) {
 						verifRecurence[x][y] = true;
 						supprimer(x, y-1, verifRecurence);
@@ -110,7 +171,7 @@ public class Plateau implements GestionBlock{
 		}
 		if (!(isEmpty(x-1, y))) {
 			if (isDestructible(x-1, y)) {
-				if (verifRecurence[x-1][y] == false) {
+				if (!verifRecurence[x-1][y]) {
 					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x-1][y]).couleur)) {
 						verifRecurence[x][y] = true;
 						supprimer(x-1, y, verifRecurence);
@@ -120,6 +181,57 @@ public class Plateau implements GestionBlock{
 			}
 		}
 		this._plateau[x][y] = null;		
+	}
+
+	public boolean[][] preBombe(int x, int y, boolean[][] tab) {
+		if (!(isEmpty(x, y+1))) {
+			if (isDestructible(x, y+1)) {		
+				tab[x][y+1] = true;			
+			}					
+		}
+
+		if (!(isEmpty(x+1, y))) {
+			if (isDestructible(x+1, y)) {		
+				tab[x+1][y] = true;		
+			}					
+		}
+
+		if (!(isEmpty(x+1, y+1))) {
+			if (isDestructible(x+1, y+1)) {		
+				tab[x+1][y+1] = true;		
+			}					
+		}
+
+		if (!(isEmpty(x-1, y+1))) {
+			if (isDestructible(x-1, y+1)) {		
+				tab[x-1][y+1] = true;			
+			}					
+		}
+
+		if (!(isEmpty(x+1, y-1))) {
+			if (isDestructible(x+1, y-1)) {		
+				tab[x+1][y-1] = true;			
+			}					
+		}
+
+		if (!(isEmpty(x-1, y-1))) {
+			if (isDestructible(x-1, y-1)) {		
+				tab[x-1][y-1] = true;			
+			}					
+		}
+
+		if (!(isEmpty(x, y-1))) {
+			if (isDestructible(x, y-1)) {		
+				tab[x][y-1] = true;			
+			}					
+		}
+
+		if (!(isEmpty(x-1, y))) {
+			if (isDestructible(x-1, y)) {		
+				tab[x-1][y] = true;			
+			}					
+		}	
+		return tab;	
 	}
 
 	public void bombe(int x, int y) {
@@ -184,13 +296,31 @@ public class Plateau implements GestionBlock{
 		this._plateau[x][y] = null;		
 	}
 
-	public void supprimeColone(int y){
+	public boolean[][] preSupprimeColonne(int y, boolean[][] tab) {
+		for(int i = 0; i<this._plateau.length ; i++){
+			if(this._plateau[i][y] instanceof BlockDestructible || this._plateau[i][y] instanceof BlockDestructibleSi){
+				tab[i][y] = true;	
+			}
+		}
+		return tab;
+	}
+
+	public void supprimeColonne(int y){
 		for(int i = 0; i<this._plateau.length ; i++){
 			if(this._plateau[i][y] instanceof BlockDestructible || this._plateau[i][y] instanceof BlockDestructibleSi){
 				this._plateau[i][y] = null;
 				System.out.println("Destruction");		
 			}
 		}
+	}
+
+	public boolean[][] preSupprimeLigne(int x, boolean[][] tab) {
+		for(int i = 0; i<this._plateau[x].length ; i++){
+			if(this._plateau[x][i] instanceof BlockDestructible || this._plateau[x][i] instanceof BlockDestructibleSi){
+				tab[x][i] = true;	
+			}
+		}		
+		return tab;
 	}
 
 	public void supprimeLigne(int x){
@@ -226,7 +356,6 @@ public class Plateau implements GestionBlock{
 						this._plateau[j][i+1] = null;
 					}
 				}
-				//this.actualiser();
 			}
 		}
 	}
@@ -244,9 +373,7 @@ public class Plateau implements GestionBlock{
 	}
 
 	public boolean isSpecial(int x, int y) {
-		System.out.println("isSpecial ?");
 		if (this._plateau[x][y] instanceof BlockSpecial) {
-			System.out.println("isSpecial");
 			return true;
 		} return false;
 	}

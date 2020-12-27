@@ -2,6 +2,7 @@ package Menu ;
 
 import model.Niveau;
 import model.Groupe;
+import model.Jouer.JouerShell;
 import model.Jouer.JoueurGraphique;
 
 import view.ChooseLevelView;
@@ -23,6 +24,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.event.ChangeListener;
 import javax.swing.undo.UndoManager;
 
 public class MenuPrincipal extends JFrame {
@@ -44,7 +46,7 @@ public class MenuPrincipal extends JFrame {
 		this.play = new JButton("PLAY");
 		this.setting = new JButton("SETTING");
 		this.profil = new JButton("PROFIL");
-		this.dev = new JButton("MODE DEVELOPPEUR");
+		this.dev = new JButton("MODE DEVELOPPEUR (shell)");
 		JMenuBar bar = new JMenuBar();
         bar.setLayout(new GridLayout(1,3));
 		bar.add(play);
@@ -61,8 +63,9 @@ public class MenuPrincipal extends JFrame {
 			});
 
 		play.addActionListener((ActionEvent e)->{new ChooseLevelView(this._groupe);});
+		dev.addActionListener((ActionEvent e)->{JouerShell.jouerNiveau(this._groupe);});
         
-    }
+	}
  
     public class ImagePane extends JPanel{
 		private static final long serialVersionUID = -5943567091824810243L;
