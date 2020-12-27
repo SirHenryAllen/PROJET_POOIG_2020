@@ -17,7 +17,7 @@ public class Test {
 		p.setVisible(true);
 
 		// Construction niveau
-		Niveau v1 = new Niveau(22, 12);
+		/* Niveau v1 = new Niveau(22, 12);
 		v1.ajouterBlock(3);
 		v1.getPlateau().actualiser();
 
@@ -27,7 +27,7 @@ public class Test {
 			JouerShell.jouerNiveau(v1);
 		} else {
 			JoueurGraphique.jouerNiveau(v1);
-		}
+		} */
 		
 		//----------
 

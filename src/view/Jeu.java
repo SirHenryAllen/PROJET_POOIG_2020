@@ -101,6 +101,17 @@ public class Jeu extends JFrame  {
         this.getContentPane().add(this.playPanel);
     }
 
+    public void displayOnClick(boolean[][] tab) {
+        System.out.println("display");
+        for (int i = 0 ; i < this.pan.length ; i++) {
+            for (int j = 0 ; j < this.pan.length ; j++) {
+                if (tab[i+11][j+1]) {
+                    this.pan[i][j].setBackground(new Color(255, 255, 255));
+                }
+            }
+        }
+    }
+
     // Actualise l'affichage graphique des éléments
     public void reload(Plateau p) {
         for (int i = 0 ; i < this.pan.length ; i++) {
