@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class JoueurGraphique {
 
-    public static void jouerNiveau(Niveau n) throws IOException{
+    public static void jouerNiveau(Niveau n){
         
         //Construction de l'affichage
         Jeu visuel = new Jeu(n.getPlateau());
