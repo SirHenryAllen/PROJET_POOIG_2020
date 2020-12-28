@@ -1,5 +1,6 @@
-package Menu ;
+package Menu;
 
+import view.Profil;
 import model.Niveau;
 import model.Groupe;
 import model.Jouer.JouerShell;
@@ -24,6 +25,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.event.ChangeListener;
 import javax.swing.undo.UndoManager;
 
@@ -64,7 +66,11 @@ public class MenuPrincipal extends JFrame {
 
 		play.addActionListener((ActionEvent e)->{new ChooseLevelView(this._groupe);});
 		dev.addActionListener((ActionEvent e)->{JouerShell.jouerNiveau(this._groupe);});
-        
+        profil.addActionListener((ActionEvent e)->{
+			JTextField t = new JTextField("Nom...");  
+			t.setBounds(100,100, 200,50);
+			this.add(t) ;
+		});
 	}
  
     public class ImagePane extends JPanel{
