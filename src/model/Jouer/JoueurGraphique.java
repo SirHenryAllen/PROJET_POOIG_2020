@@ -6,9 +6,16 @@ import java.io.IOException;
 
 public class JoueurGraphique {
 
-    public static void jouerNiveau(Niveau n){
-        Jeu visuel = new Jeu(n.getPlateau());
-        visuel.setVisible(true);
+    public static void jouerNiveau(Niveau n) {
+        Jeu visuel;
+        try {
+            visuel = new Jeu(n.getPlateau());
+            visuel.setVisible(true);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
     }   
 
 }

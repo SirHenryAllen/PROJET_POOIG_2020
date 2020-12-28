@@ -11,9 +11,11 @@ import Interface.GestionBlock;
 
 public class Plateau implements GestionBlock{
 	private final Block[][] _plateau;
+    private int score ;
 
 	public Plateau (int x, int y) {
 		this._plateau = new Block[x][y];
+		this.score = 0 ;
 	}
 	
 	public boolean checkAnimaux() {
@@ -181,6 +183,8 @@ public class Plateau implements GestionBlock{
 			}
 		}
 		this._plateau[x][y] = null;		
+		this.setScore(10);
+		System.out.println("score :"+ this.getScore());
 	}
 
 	public boolean[][] preBombe(int x, int y, boolean[][] tab) {
@@ -294,6 +298,9 @@ public class Plateau implements GestionBlock{
 		}
 
 		this._plateau[x][y] = null;		
+		this.setScore(50);
+		System.out.println("score :"+ this.getScore());
+
 	}
 
 	public boolean[][] preSupprimeColonne(int y, boolean[][] tab) {
@@ -310,8 +317,10 @@ public class Plateau implements GestionBlock{
 			if(this._plateau[i][y] instanceof BlockDestructible || this._plateau[i][y] instanceof BlockDestructibleSi){
 				this._plateau[i][y] = null;
 				System.out.println("Destruction");		
+				System.out.println("score :"+ this.getScore());
 			}
 		}
+		this.setScore(40);
 	}
 
 	public boolean[][] preSupprimeLigne(int x, boolean[][] tab) {
@@ -328,8 +337,11 @@ public class Plateau implements GestionBlock{
 			if(this._plateau[x][i] instanceof BlockDestructible || this._plateau[x][i] instanceof BlockDestructibleSi){
 				this._plateau[x][i] = null;
 				System.out.println("Destruction");		
+				System.out.println("score :"+ this.getScore());
 			}
 		}
+		this.setScore(40);
+
 	}
 
 	
@@ -396,6 +408,24 @@ public class Plateau implements GestionBlock{
 
 	public void setBlock(int x, int y, Block b) {
 		this._plateau[x][y] = b;
+	}
+
+	public int getScore() {
+        return this.score ;
+    } 
+
+    public void setScore(int s) {
+		score = score + s ;
+    }
+
+
+	public boolean isWinner(){
+		if(checkAnimaux()){
+			System.out.println("vous avez gagner !");
+			return true ;
+		}
+		System.out.println("vous avez perdu !");
+		return false ;
 	}
 
 }
