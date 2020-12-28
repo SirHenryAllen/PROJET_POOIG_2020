@@ -67,9 +67,7 @@ public class MenuPrincipal extends JFrame {
 		play.addActionListener((ActionEvent e)->{new ChooseLevelView(this._groupe);});
 		dev.addActionListener((ActionEvent e)->{JouerShell.jouerNiveau(this._groupe);});
         profil.addActionListener((ActionEvent e)->{
-			JTextField t = new JTextField("Nom...");  
-			t.setBounds(100,100, 200,50);
-			this.add(t) ;
+			Profil p = new Profil();
 		});
 	}
  
