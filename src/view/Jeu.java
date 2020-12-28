@@ -1,5 +1,7 @@
 package view;
 
+import model.Niveau;
+import model.Jouer.JoueurGraphique;
 import model.Block.Animaux;
 import model.Block.BlockDestructible;
 import model.Block.BlockFixe;
@@ -7,13 +9,15 @@ import model.Block.BlockSpecial;
 import model.Plateau;
 import control.ControlGraphique.Carre;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import java.awt.Color;
 import java.awt.*;
@@ -22,35 +26,43 @@ public class Jeu extends JFrame  {
     private static final long serialVersionUID = 1L;
     private JPanel playPanel;
     private Carre[][] pan;
+    JLabel scoreLabel ;   
     JMenuBar menubar ;
     JMenu file ;
 
-    public Jeu(Plateau p) {
+    public Jeu(Plateau p) throws IOException{
+        this.playPanel = new JPanel();
         JButton replay = new JButton("replay");
         JButton quitter = new JButton("quitter");
         JMenuBar menubar = new JMenuBar() ;
+
+        scoreLabel = new JLabel("Score : "+ p.getScore()) ;
         this.setJMenuBar(menubar);
         menubar.add(quitter) ;
         menubar.add(replay) ;
+        menubar.add(scoreLabel) ;    
         quitter.addActionListener((ActionEvent e)->{
             System.exit(0);
         });
+       
         replay.addActionListener((ActionEvent e)->{
-            System.exit(0);
+            Niveau v1 = new Niveau(22, 12);
+			v1.ajouterBlock(3);
+			v1.getPlateau().actualiser();
+			JoueurGraphique.jouerNiveau(v1);
+
         });
 
         this.setTitle("PetRescue");
         this.setSize(800, 600);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-        this.playPanel = new JPanel();
-
+        
         GridLayout alignBlock = new GridLayout(10,10);
         playPanel.setLayout(alignBlock);
 
         this.pan = new Carre[10][10];
 
         construct(p);
+        repaint();
     }
 
     // Construit le tableau de blocks (visuellement).
@@ -175,4 +187,5 @@ public class Jeu extends JFrame  {
         }
         return t;
     }
+    
 }

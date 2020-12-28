@@ -20,7 +20,6 @@ public class ChooseLevelView extends JFrame {
     public ChooseLevelView(Groupe g) {
         this.setTitle("Niveaux");
         this.setSize(800, 600);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         this._levelPanel = new JPanel();
         this.setVisible(true); 
