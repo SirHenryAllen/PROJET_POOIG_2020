@@ -44,6 +44,7 @@ public class ControlGraphique {
             this.p.supprimer(this.affichage.getPos(this)[0] + 11, this.affichage.getPos(this)[1] + 1, new boolean[p.getHauteur()][p.getLargeur()]);
             this.p.actualiser();
             this.affichage.reload(p);
+            this.affichage.refreshScore(p);
         }
 
         @Override
