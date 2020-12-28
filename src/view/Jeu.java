@@ -34,7 +34,7 @@ public class Jeu extends JFrame  {
         this.playPanel = new JPanel();
         JButton replay = new JButton("replay");
         JButton quitter = new JButton("quitter");
-        JMenuBar menubar = new JMenuBar() ;
+        JMenuBar menubar = new JMenuBar();
 
         scoreLabel = new JLabel("Score : "+ p.getScore()) ;
         this.setJMenuBar(menubar);
@@ -63,6 +63,10 @@ public class Jeu extends JFrame  {
 
         construct(p);
         repaint();
+    }
+
+    public void refreshScore(Plateau p) {
+        this.scoreLabel.setText(((Integer)p.getScore()).toString());
     }
 
     // Construit le tableau de blocks (visuellement).
