@@ -1,3 +1,4 @@
+package test ;
 import java.util.Scanner;
 import java.io.IOException;
 import model.Niveau;
@@ -17,7 +18,7 @@ public class Test {
 		p.setVisible(true);
 
 		// Construction niveau
-		Niveau v1 = new Niveau(22, 12);
+		/* Niveau v1 = new Niveau(22, 12);
 		v1.ajouterBlock(3);
 		v1.getPlateau().actualiser();
 
@@ -27,12 +28,9 @@ public class Test {
 			JouerShell.jouerNiveau(v1);
 		} else {
 			JoueurGraphique.jouerNiveau(v1);
-		}
+		} */
 		
 		//----------
-
-		
-
 		//System.out.println("Hauteur du plateau = " + v1.getPlateau().getHauteur());
 		//System.out.println("Largeur du plateau = " + v1.getPlateau().getLargeur());
 		//v1.getPlateau().supprimer(17, 1, new boolean[22][12]);

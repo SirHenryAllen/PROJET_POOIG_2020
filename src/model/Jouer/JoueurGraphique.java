@@ -6,19 +6,9 @@ import java.io.IOException;
 
 public class JoueurGraphique {
 
-    public static void jouerNiveau(Niveau n) throws IOException{
-        
-        //Construction de l'affichage
+    public static void jouerNiveau(Niveau n){
         Jeu visuel = new Jeu(n.getPlateau());
         visuel.setVisible(true);
-        /* javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            
-            public void run() {
-                ControlGraphique control = new ControlGraphique();
-                
-            }
-            
-        }); */
     }   
 
 }

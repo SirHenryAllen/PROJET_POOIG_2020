@@ -31,19 +31,19 @@ public class ControlGraphique {
         // Déclenche l'événement lorsqu'un clique est détecté dans une zone particulière
         @Override
         public void mouseClicked(MouseEvent e) {
-            this.p.supprimer(this.affichage.getPos(this)[0] + 11, this.affichage.getPos(this)[1] + 1, new boolean[p.getHauteur()][p.getLargeur()]);
-            this.p.actualiser();
-            this.affichage.reload(p);
+
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
-            //TODO
+            this.affichage.displayOnClick(this.p.preSupprimer(this.affichage.getPos(this)[0] + 11, this.affichage.getPos(this)[1] + 1, new boolean[p.getHauteur()][p.getLargeur()]));       
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            //TODO
+            this.p.supprimer(this.affichage.getPos(this)[0] + 11, this.affichage.getPos(this)[1] + 1, new boolean[p.getHauteur()][p.getLargeur()]);
+            this.p.actualiser();
+            this.affichage.reload(p);
         }
 
         @Override
