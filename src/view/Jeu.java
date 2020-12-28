@@ -55,8 +55,7 @@ public class Jeu extends JFrame  {
 
         this.setTitle("PetRescue");
         this.setSize(800, 600);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+        
         GridLayout alignBlock = new GridLayout(10,10);
         playPanel.setLayout(alignBlock);
 
