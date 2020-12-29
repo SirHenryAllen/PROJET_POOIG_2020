@@ -8,6 +8,7 @@ import model.Jouer.JoueurGraphique;
 
 import view.ChooseLevelView;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -21,11 +22,13 @@ import java.awt.event.MouseMotionListener;
 import java.io.IOException;
 import java.util.Timer;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.event.ChangeListener;
 import javax.swing.undo.UndoManager;
 
@@ -45,10 +48,15 @@ public class MenuPrincipal extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.imagePane = new ImagePane();
+
 		this.play = new JButton("PLAY");
 		this.setting = new JButton("SETTING");
 		this.profil = new JButton("PROFIL");
 		this.dev = new JButton("MODE DEVELOPPEUR (shell)");
+
+
+		this.setPreferredSize(new Dimension(model.getImage().getWidth(),model.getImage().getHeight()));
+		this.setContentPane(imagePane);
 		JMenuBar bar = new JMenuBar();
         bar.setLayout(new GridLayout(1,3));
 		bar.add(play);
@@ -56,6 +64,7 @@ public class MenuPrincipal extends JFrame {
 		bar.add(profil);
 		bar.add(dev);
 		this.setJMenuBar(bar);
+		
 		this.setContentPane(imagePane);
 		play.addActionListener(
 			(ActionEvent e) ->{
@@ -67,7 +76,7 @@ public class MenuPrincipal extends JFrame {
 		play.addActionListener((ActionEvent e)->{new ChooseLevelView(this._groupe);});
 		dev.addActionListener((ActionEvent e)->{JouerShell.jouerNiveau(this._groupe);});
         profil.addActionListener((ActionEvent e)->{
-			Profil p = new Profil();
+			new Profil();
 		});
 	}
  
