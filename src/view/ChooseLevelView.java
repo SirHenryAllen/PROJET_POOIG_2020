@@ -33,6 +33,7 @@ public class ChooseLevelView extends JFrame {
         this._levelPan[0].addActionListener((ActionEvent e)->{JoueurGraphique.jouerNiveau(this._groupe.getNiveaux().get(0));});
         this._levelPan[1].addActionListener((ActionEvent e)->{JoueurGraphique.jouerNiveau(this._groupe.getNiveaux().get(1));});
         this._levelPan[2].addActionListener((ActionEvent e)->{JoueurGraphique.jouerNiveau(this._groupe.getNiveaux().get(2));});
+        this._levelPan[3].addActionListener((ActionEvent e)->{JoueurGraphique.jouerNiveau(this._groupe.getNiveaux().get(3));});
         
     }
 

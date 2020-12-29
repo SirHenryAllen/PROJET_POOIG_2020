@@ -48,6 +48,7 @@ public class Plateau implements GestionBlock{
 	} 
 
 	public boolean[][] preSupprimer(int x, int y, boolean[][] verifRecurence) {
+		
 		if (isSpecial(x, y)) {
 			if (((BlockSpecial)this._plateau[x][y]).getType() == 'a') {
 				return preBombe(x, y, verifRecurence);
@@ -60,6 +61,10 @@ public class Plateau implements GestionBlock{
 				verifRecurence[x][y] = true;
 				return preSupprimeLigne(x, verifRecurence);
 			}
+		}
+
+		if (isAnimaux(x, y) || !(isDestructible(x, y))) {
+			return verifRecurence;
 		}
 
 		else if (!(isEmpty(x, y+1))) {
@@ -369,11 +374,31 @@ public class Plateau implements GestionBlock{
 					}
 				}
 			}
+			else if (this._plateau[20][i] instanceof BlockFixe) {
+				int j = 19;
+				while ((this._plateau[j][i] instanceof BlockFixe || this._plateau[j][i] == null) && j > 1) {
+					j--;
+				}
+				if (j == 1) {
+					for (int k = 1 ; k < this._plateau.length ; k++) {
+						if (!(this._plateau[k][i+1] instanceof BlockFixe)) {
+							this._plateau[k][i] = this._plateau[k][i+1]; 
+							this._plateau[k][i+1] = null;
+						}
+					}				
+				}
+			}
 		}
 	}
 
 	public boolean isDestructible(int x, int y) {
 		if (this._plateau[x][y] instanceof BlockDestructible) {
+			return true;
+		} return false;
+	}
+
+	public boolean isAnimaux(int x, int y) {
+		if (this._plateau[x][y] instanceof Animaux) {
 			return true;
 		} return false;
 	}
