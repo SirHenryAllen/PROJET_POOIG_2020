@@ -14,8 +14,13 @@ public class Test {
 
 	public static void main(String[] args) throws IOException {
 		
-		Profil p = new Profil();
-		p.setVisible(true);
+	//	Profil p = new Profil();
+	//	p.setVisible(true);
+
+		Niveau test = new Niveau(22, 12);
+		test.ajouterBlock(4);
+		test.getPlateau().actualiser();
+		JoueurGraphique.jouerNiveau(test);
 
 		// Construction niveau
 		/* Niveau v1 = new Niveau(22, 12);

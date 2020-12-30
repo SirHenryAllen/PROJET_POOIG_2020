@@ -7,8 +7,6 @@ import model.Block.BlockSpecial;
 import model.Block.BlockDestructible;
 import model.Block.BlockDestructibleSi;
 
-import javax.swing.JLabel;
-
 import Interface.GestionBlock;
 
 public class Plateau implements GestionBlock{
@@ -349,35 +347,28 @@ public class Plateau implements GestionBlock{
 	
 
 	public void actualiser() {
-
-		if (!(this.isWinner())){
 		// Mise en oeuvre de la "gravité" afin de de ramener les blocs, ne s'appuyant sur rien, vers le bas.
-			for (int i = 0 ; i<this._plateau.length ; i++) {
-				for (int j = 0 ; j<this._plateau[i].length ; j++) {
-					if (!(this._plateau[i][j] instanceof BlockFixe) && this._plateau[i][j] != null) {
-						if (isEmpty(i+1, j)) {
-							this._plateau[i+1][j] = this._plateau[i][j]; 
-							this._plateau[i][j] = null;
-							this.actualiser();
-						}
+		for (int i = 0 ; i<this._plateau.length ; i++) {
+			for (int j = 0 ; j<this._plateau[i].length ; j++) {
+				if (!(this._plateau[i][j] instanceof BlockFixe) && this._plateau[i][j] != null) {
+					if (isEmpty(i+1, j)) {
+						this._plateau[i+1][j] = this._plateau[i][j]; 
+						this._plateau[i][j] = null;
+						this.actualiser();
 					}
 				}
 			}
-			// Décalage vers la gauche
-			for (int i = 1 ; i < this._plateau[0].length-1 ; i++) {
-				if (this._plateau[20][i] == null) {
-					for (int j = 1 ; j < this._plateau.length ; j++) {
-						if (!(this._plateau[j][i+1] instanceof BlockFixe)) {
-							this._plateau[j][i] = this._plateau[j][i+1]; 
-							this._plateau[j][i+1] = null;
-						}
+		}
+		// Décalage vers la gauche
+		for (int i = 1 ; i < this._plateau[0].length-1 ; i++) {
+			if (this._plateau[20][i] == null) {
+				for (int j = 1 ; j < this._plateau.length ; j++) {
+					if (!(this._plateau[j][i+1] instanceof BlockFixe)) {
+						this._plateau[j][i] = this._plateau[j][i+1]; 
+						this._plateau[j][i+1] = null;
 					}
 				}
-			} 
-		}else{
-			JLabel win = new JLabel();
-			win.setText("you win !");
-			win.setVisible(true);
+			}
 		}
 	}
 
