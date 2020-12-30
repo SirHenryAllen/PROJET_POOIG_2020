@@ -130,6 +130,7 @@ public class Jeu extends JFrame  {
 
     // Actualise l'affichage graphique des éléments
     public void reload(Plateau p) {
+        if(!win(p))
         for (int i = 0 ; i < this.pan.length ; i++) {
             for (int j = 0 ; j < this.pan.length ; j++) {
                 if (p.getBlock(i+11, j+1) instanceof BlockDestructible) {
@@ -172,7 +173,16 @@ public class Jeu extends JFrame  {
                 }
                 this.playPanel.add(this.pan[i][j]);       
             }
-        }        
+        }
+        
+    }
+
+    public boolean win(Plateau p){
+        if(p.checkAnimaux()){
+
+            return true ;
+        }
+        return false ;
     }
 
     public Carre getCarre(int x, int y) {

@@ -34,7 +34,7 @@ import javax.swing.undo.UndoManager;
 
 public class MenuPrincipal extends JFrame {
 	private static final long serialVersionUID = -3909496315491074971L;
-	JButton play, setting, profil, dev;
+	JButton play, profil, dev;
 	ImagePane imagePane ;
 	MenuModel model ;
 	JMenuBar bar ;
@@ -48,30 +48,20 @@ public class MenuPrincipal extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.imagePane = new ImagePane();
-
 		this.play = new JButton("PLAY");
-		this.setting = new JButton("SETTING");
 		this.profil = new JButton("PROFIL");
 		this.dev = new JButton("MODE DEVELOPPEUR (shell)");
-
-
 		this.setPreferredSize(new Dimension(model.getImage().getWidth(),model.getImage().getHeight()));
 		this.setContentPane(imagePane);
+		
 		JMenuBar bar = new JMenuBar();
         bar.setLayout(new GridLayout(1,3));
 		bar.add(play);
-		bar.add(setting);
 		bar.add(profil);
 		bar.add(dev);
-		this.setJMenuBar(bar);
 		
+		this.setJMenuBar(bar);
 		this.setContentPane(imagePane);
-		play.addActionListener(
-			(ActionEvent e) ->{
-				Niveau v1 = new Niveau(22, 12);
-				v1.ajouterBlock(3);
-				v1.getPlateau().actualiser();
-			});
 
 		play.addActionListener((ActionEvent e)->{new ChooseLevelView(this._groupe);});
 		dev.addActionListener((ActionEvent e)->{JouerShell.jouerNiveau(this._groupe);});
