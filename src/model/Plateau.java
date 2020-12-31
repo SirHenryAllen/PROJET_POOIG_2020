@@ -61,6 +61,10 @@ public class Plateau implements GestionBlock{
 			}
 		}
 
+		if (isAnimaux(x, y) || !(isDestructible(x, y))) {
+			return verifRecurence;
+		}
+
 		else if (!(isEmpty(x, y+1))) {
 			if (isDestructible(x, y+1)) {
 				if (!verifRecurence[x][y+1]) {
@@ -362,7 +366,6 @@ public class Plateau implements GestionBlock{
 
 	public void actualiser() {
 		// Mise en oeuvre de la "gravité" afin de de ramener les blocs, ne s'appuyant sur rien, vers le bas.
-
 		for (int i = 0 ; i<this._plateau.length ; i++) {
 			for (int j = 0 ; j<this._plateau[i].length ; j++) {
 				if (!(this._plateau[i][j] instanceof BlockFixe) && this._plateau[i][j] != null) {
@@ -370,12 +373,10 @@ public class Plateau implements GestionBlock{
 						this._plateau[i+1][j] = this._plateau[i][j]; 
 						this._plateau[i][j] = null;
 						this.actualiser();
-					}	
-
+					}
 				}
 			}
 		}
-		
 		// Décalage vers la gauche
 		for (int i = 1 ; i < this._plateau[0].length-1 ; i++) {
 			if (this._plateau[20][i] == null) {
@@ -386,11 +387,31 @@ public class Plateau implements GestionBlock{
 					}
 				}
 			}
+			else if (this._plateau[20][i] instanceof BlockFixe) {
+				int j = 19;
+				while ((this._plateau[j][i] instanceof BlockFixe || this._plateau[j][i] == null) && j > 1) {
+					j--;
+				}
+				if (j == 1) {
+					for (int k = 1 ; k < this._plateau.length ; k++) {
+						if (!(this._plateau[k][i+1] instanceof BlockFixe)) {
+							this._plateau[k][i] = this._plateau[k][i+1]; 
+							this._plateau[k][i+1] = null;
+						}
+					}				
+				}
+			}
 		}
 	}
 
 	public boolean isDestructible(int x, int y) {
 		if (this._plateau[x][y] instanceof BlockDestructible) {
+			return true;
+		} return false;
+	}
+
+	public boolean isAnimaux(int x, int y) {
+		if (this._plateau[x][y] instanceof Animaux) {
 			return true;
 		} return false;
 	}

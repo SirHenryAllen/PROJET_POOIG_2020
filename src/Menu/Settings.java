@@ -29,8 +29,8 @@ public class Settings {
 
 
 		try {
-			model = new MenuModel("C:\\Users\\Sunay\\eclipse-workspace\\MenuM\\backgroundMenu.png");
-			//model = new MenuModel("/home/sha/Projets/PROJET_POOIG_2020/src/Menu/backgroundMenu.png");
+			//model = new MenuModel("C:\\Users\\Sunay\\eclipse-workspace\\MenuM\\backgroundMenu.png");
+			model = new MenuModel("/home/sha/Projets/PROJET_POOIG_2020/src/Menu/backgroundMenu.png");
 			MenuPrincipal view = new MenuPrincipal(model, g);
 			view.pack();
 			view.setVisible(true);
