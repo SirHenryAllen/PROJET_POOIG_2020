@@ -132,8 +132,6 @@ public class Plateau implements GestionBlock{
 			}
 		}
 
-
-
 		else if (!isDestructible(x, y)) {
 			return;
 		}
@@ -173,6 +171,7 @@ public class Plateau implements GestionBlock{
 				}
 			}	
 		}
+
 		if (!(isEmpty(x-1, y))) {
 			if (isDestructible(x-1, y)) {
 				if (!verifRecurence[x-1][y]) {
@@ -186,9 +185,20 @@ public class Plateau implements GestionBlock{
 		}
 
 
+
 		this._plateau[x][y] = null;		
 		this.setScore(10);
 		System.out.println("score :"+ this.getScore());
+
+				//check si ya des animaux tout en bas et les suppriment
+				for(int i = 0 ; i<12 ; i++){
+					if(this._plateau[20][i] instanceof Animaux){
+						this._plateau[20][i] = null ;	
+						System.out.println("Un Hawk a été sauvé !");
+						this.setScore(50);
+						System.out.println("score :"+ this.getScore());
+					} 
+				}
 	}
 
 	public boolean[][] preBombe(int x, int y, boolean[][] tab) {
@@ -352,15 +362,7 @@ public class Plateau implements GestionBlock{
 
 	public void actualiser() {
 		// Mise en oeuvre de la "gravité" afin de de ramener les blocs, ne s'appuyant sur rien, vers le bas.
-		for(int i = 1 ; i<11 ;i++ ){
-			if(this._plateau[20][i] instanceof Animaux){
-				this._plateau[20][i] = null ;	
-				System.out.println("Un Hawk a été sauvé !");
-				this.setScore(50);
-				System.out.println("score :"+ this.getScore());
-				return ;
-			} 
-		}
+
 		for (int i = 0 ; i<this._plateau.length ; i++) {
 			for (int j = 0 ; j<this._plateau[i].length ; j++) {
 				if (!(this._plateau[i][j] instanceof BlockFixe) && this._plateau[i][j] != null) {
@@ -368,10 +370,12 @@ public class Plateau implements GestionBlock{
 						this._plateau[i+1][j] = this._plateau[i][j]; 
 						this._plateau[i][j] = null;
 						this.actualiser();
-					}
+					}	
+
 				}
 			}
 		}
+		
 		// Décalage vers la gauche
 		for (int i = 1 ; i < this._plateau[0].length-1 ; i++) {
 			if (this._plateau[20][i] == null) {
@@ -432,13 +436,5 @@ public class Plateau implements GestionBlock{
     }
 
 
-	public boolean isWinner(){
-		if(checkAnimaux()){
-			System.out.println("vous avez gagner !");
-			return true ;
-		}
-		System.out.println("vous avez perdu !");
-		return false ;
-	}
 
 }
