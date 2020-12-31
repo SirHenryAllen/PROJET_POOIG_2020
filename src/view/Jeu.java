@@ -73,10 +73,10 @@ public class Jeu extends JFrame  {
     public void construct(Plateau p) {
         for (int i = 0 ; i < this.pan.length ; i++) {
             for (int j = 0 ; j < this.pan.length ; j++) {
-                if (p.getBlock(i+11, j+1) instanceof BlockDestructible) {
-                    if (((BlockDestructible)p.getBlock(i+11, j+1)).couleur == 'a') {
-                        this.pan[i][j] = new Carre(new Color(249, 238, 3), p, this);
-                    }
+                    if (p.getBlock(i+11, j+1) instanceof BlockDestructible) {
+                        if (((BlockDestructible)p.getBlock(i+11, j+1)).couleur == 'a') {
+                            this.pan[i][j] = new Carre(new Color(249, 238, 3), p, this);
+                        }
                     else if (((BlockDestructible)p.getBlock(i+11, j+1)).couleur == 'b') {
                         this.pan[i][j] = new Carre(new Color(51, 162, 255), p, this);  
                     }
@@ -112,10 +112,11 @@ public class Jeu extends JFrame  {
                     this.pan[i][j] = new Carre(new Color(255, 255, 255), p, this);  
                 }
                 this.playPanel.add(this.pan[i][j]);       
-            }
+           
         }
         this.getContentPane().add(this.playPanel);
     }
+}
 
     public void displayOnClick(boolean[][] tab) {
         System.out.println("display");
@@ -130,49 +131,49 @@ public class Jeu extends JFrame  {
 
     // Actualise l'affichage graphique des éléments
     public void reload(Plateau p) {
-        for (int i = 0 ; i < this.pan.length ; i++) {
-            for (int j = 0 ; j < this.pan.length ; j++) {
-                if (p.getBlock(i+11, j+1) instanceof BlockDestructible) {
-                    if (((BlockDestructible)p.getBlock(i+11, j+1)).couleur == 'a') {
-                        this.pan[i][j].setBackground(new Color(249, 238, 3));
+            for (int i = 0 ; i < this.pan.length ; i++) {
+                for (int j = 0 ; j < this.pan.length ; j++) {
+                    if (p.getBlock(i+11, j+1) instanceof BlockDestructible) {
+                        if (((BlockDestructible)p.getBlock(i+11, j+1)).couleur == 'a') {
+                            this.pan[i][j].setBackground(new Color(249, 238, 3));
+                        }
+                        else if (((BlockDestructible)p.getBlock(i+11, j+1)).couleur == 'b') {
+                            this.pan[i][j].setBackground(new Color(51, 162, 255));  
+                        }
+                        else if (((BlockDestructible)p.getBlock(i+11, j+1)).couleur == 'c') {
+                            this.pan[i][j].setBackground(new Color(70, 188, 2)); 
+                        }
+                        else if (((BlockDestructible)p.getBlock(i+11, j+1)).couleur == 'd') {
+                            this.pan[i][j].setBackground(new Color(207, 7, 38));
+                        }
+                    }   
+                    else if (p.getBlock(i+11, j+1) instanceof BlockSpecial) {
+                        if (((BlockSpecial) p.getBlock(i+11, j+1)).getType() == 'a') {
+                            this.pan[i][j].setBackground(new Color(194, 14, 209));
+                        } 
+                        else if (((BlockSpecial) p.getBlock(i + 11, j + 1)).getType() == 'b') {
+                            this.pan[i][j].setBackground(new Color(16, 232, 209));
+                        }
+                        else if (((BlockSpecial) p.getBlock(i+11, j+1)).getType() == 'c') {
+                            this.pan[i][j].setBackground(new Color(232, 140, 16));
+                        } 
                     }
-                    else if (((BlockDestructible)p.getBlock(i+11, j+1)).couleur == 'b') {
-                        this.pan[i][j].setBackground(new Color(51, 162, 255));  
+                    else if (p.getBlock(i+11, j+1) instanceof BlockFixe) {
+                        if (((BlockFixe)p.getBlock(i+11, j+1)).getType() == 'a') {
+                            this.pan[i][j].setBackground(new Color(0, 0, 0));
+                        }
                     }
-                    else if (((BlockDestructible)p.getBlock(i+11, j+1)).couleur == 'c') {
-                        this.pan[i][j].setBackground(new Color(70, 188, 2)); 
+                    else if (p.getBlock(i+11, j+1) instanceof Animaux) {
+                        if (((Animaux)p.getBlock(i+11, j+1)).getType() == 'a') {
+                            this.pan[i][j].setBackground(new Color(140, 138, 138)); 
+                        }                   
                     }
-                    else if (((BlockDestructible)p.getBlock(i+11, j+1)).couleur == 'd') {
-                        this.pan[i][j].setBackground(new Color(207, 7, 38));
+                    else if (p.getBlock(i+11, j+1) == null) {
+                        this.pan[i][j].setBackground(new Color(255, 255, 255));  
                     }
-                }   
-                else if (p.getBlock(i+11, j+1) instanceof BlockSpecial) {
-                    if (((BlockSpecial) p.getBlock(i+11, j+1)).getType() == 'a') {
-                        this.pan[i][j].setBackground(new Color(194, 14, 209));
-                    } 
-                    else if (((BlockSpecial) p.getBlock(i + 11, j + 1)).getType() == 'b') {
-                        this.pan[i][j].setBackground(new Color(16, 232, 209));
-                    }
-                    else if (((BlockSpecial) p.getBlock(i+11, j+1)).getType() == 'c') {
-                        this.pan[i][j].setBackground(new Color(232, 140, 16));
-                    } 
+                    this.playPanel.add(this.pan[i][j]);       
                 }
-                else if (p.getBlock(i+11, j+1) instanceof BlockFixe) {
-                    if (((BlockFixe)p.getBlock(i+11, j+1)).getType() == 'a') {
-                        this.pan[i][j].setBackground(new Color(0, 0, 0));
-                    }
-                }
-                else if (p.getBlock(i+11, j+1) instanceof Animaux) {
-                    if (((Animaux)p.getBlock(i+11, j+1)).getType() == 'a') {
-                        this.pan[i][j].setBackground(new Color(140, 138, 138)); 
-                    }                   
-                }
-                else if (p.getBlock(i+11, j+1) == null) {
-                    this.pan[i][j].setBackground(new Color(255, 255, 255));  
-                }
-                this.playPanel.add(this.pan[i][j]);       
             }
-        }        
     }
 
     public Carre getCarre(int x, int y) {
@@ -190,6 +191,21 @@ public class Jeu extends JFrame  {
             }
         }
         return t;
+    }
+
+    public void win(Plateau p){
+        if(p.checkAnimaux()){
+            JLabel winner = new JLabel() ;
+            //this.remove(playPanel); 
+            JPanel win = new JPanel();
+            winner.setText("vous avez gagné !");
+            winner.setHorizontalAlignment(0);
+            winner.setVisible(true);
+            win.add(winner);
+            this.setContentPane(win);
+            win.repaint();
+            win.revalidate();
+        }
     }
     
 }
