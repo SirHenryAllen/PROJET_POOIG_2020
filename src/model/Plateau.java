@@ -7,16 +7,69 @@ import model.Block.BlockSpecial;
 import model.Block.BlockDestructible;
 import model.Block.BlockDestructibleSi;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
 import Interface.GestionBlock;
+import java.io.InputStreamReader;
+
 
 public class Plateau implements GestionBlock{
 	private final Block[][] _plateau;
-    private int score ;
+	private int score ;
+	private int highScore ;
 
 	public Plateau (int x, int y) {
+
 		this._plateau = new Block[x][y];
 		this.score = 0 ;
+		loadHighScore() ;
 	}
+
+	public void createSaveData(){
+		try {
+			File file = new File("highScore.dat") ;//on a preferé utiliser l'extension .dat au lieu de .txt pour que le joueur ne puisse pas modifier ses stats 
+			FileWriter output = new FileWriter(file) ;
+			BufferedWriter writer = new BufferedWriter(output) ;
+			writer.write(""+0);
+			writer.close();
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void loadHighScore(){
+		try {
+			File f = new File("highScore.dat") ;
+			if(!f.isFile()){
+				createSaveData();
+			}
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+			highScore = Integer.parseInt(reader.readLine());
+			reader.close();
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void setHighScore(){
+		FileWriter output = null ;
+		try {
+			File f = new File("highScore.dat") ;
+			output = new FileWriter(f) ;
+			BufferedWriter writer = new BufferedWriter(output);
+			writer.write(""+highScore) ;
+			writer.close();
+		} 
+		catch (Exception e) {
+			e.printStackTrace();	
+		}
+	}
+
 	
 	public boolean checkAnimaux() {
 		for (int i = 0 ; i<this._plateau.length ; i++) {
@@ -25,7 +78,8 @@ public class Plateau implements GestionBlock{
 					return false;
 				}
 			}
-		}	
+		}
+		setHighScore();	
 		return true;
 	}
 
@@ -116,8 +170,6 @@ public class Plateau implements GestionBlock{
 		System.out.println("supprimer");
 		System.out.println(x + ", " + y);
 		//
-
-
 		if (isSpecial(x, y)) {
 			if (((BlockSpecial)this._plateau[x][y]).getType() == 'a') {
 				System.out.println("bombre sup");
@@ -188,21 +240,22 @@ public class Plateau implements GestionBlock{
 			}
 		}
 
-
-
 		this._plateau[x][y] = null;		
 		this.setScore(10);
 		System.out.println("score :"+ this.getScore());
+		System.out.println("highScore :"+ this.highScore);
+		
+		//check si ya des animaux tout en bas et les suppriment
+		for(int i = 0 ; i<12 ; i++){
+			if(this._plateau[20][i] instanceof Animaux){
+				this._plateau[20][i] = null ;	
+				System.out.println("Un Hawk a été sauvé !");
+				this.setScore(50);
+				System.out.println("score :"+ this.getScore());
+				System.out.println("highScore :"+ this.highScore);
 
-				//check si ya des animaux tout en bas et les suppriment
-				for(int i = 0 ; i<12 ; i++){
-					if(this._plateau[20][i] instanceof Animaux){
-						this._plateau[20][i] = null ;	
-						System.out.println("Un Hawk a été sauvé !");
-						this.setScore(50);
-						System.out.println("score :"+ this.getScore());
-					} 
-				}
+			} 
+		}
 	}
 
 	public boolean[][] preBombe(int x, int y, boolean[][] tab) {
@@ -258,7 +311,6 @@ public class Plateau implements GestionBlock{
 
 	public void bombe(int x, int y) {
 		//block special qui supprime les blocks destructible adjacents 
-
 		if (!(isEmpty(x, y+1))) {
 			if (isDestructible(x, y+1)) {		
 				this._plateau[x][y+1] = null;		
@@ -318,7 +370,7 @@ public class Plateau implements GestionBlock{
 		this._plateau[x][y] = null;		
 		this.setScore(50);
 		System.out.println("score :"+ this.getScore());
-
+		System.out.println("highScore :"+ this.highScore);
 	}
 
 	public boolean[][] preSupprimeColonne(int y, boolean[][] tab) {
@@ -356,15 +408,17 @@ public class Plateau implements GestionBlock{
 				this._plateau[x][i] = null;
 				System.out.println("Destruction");		
 				System.out.println("score :"+ this.getScore());
+				System.out.println("highScore :"+ this.highScore);
+
 			}
 		}
 		this.setScore(40);
 
 	}
 
-	
-
 	public void actualiser() {
+
+
 		// Mise en oeuvre de la "gravité" afin de de ramener les blocs, ne s'appuyant sur rien, vers le bas.
 		for (int i = 0 ; i<this._plateau.length ; i++) {
 			for (int j = 0 ; j<this._plateau[i].length ; j++) {
@@ -376,6 +430,9 @@ public class Plateau implements GestionBlock{
 					}
 				}
 			}
+		}
+		if(this.score >this.highScore){
+			this.highScore = this.score ;
 		}
 		// Décalage vers la gauche
 		for (int i = 1 ; i < this._plateau[0].length-1 ; i++) {
@@ -450,12 +507,9 @@ public class Plateau implements GestionBlock{
 
 	public int getScore() {
         return this.score ;
-    } 
-
+	}
+	 
     public void setScore(int s) {
 		score = score + s ;
     }
-
-
-
 }
