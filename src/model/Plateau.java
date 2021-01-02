@@ -14,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import Interface.GestionBlock;
 import java.io.InputStreamReader;
+import java.util.Random;
 
 
 public class Plateau implements GestionBlock{
@@ -239,7 +240,6 @@ public class Plateau implements GestionBlock{
 				}
 			}
 		}
-
 		this._plateau[x][y] = null;		
 		this.setScore(10);
 		System.out.println("score :"+ this.getScore());
@@ -413,12 +413,9 @@ public class Plateau implements GestionBlock{
 			}
 		}
 		this.setScore(40);
-
 	}
 
 	public void actualiser() {
-
-
 		// Mise en oeuvre de la "gravité" afin de de ramener les blocs, ne s'appuyant sur rien, vers le bas.
 		for (int i = 0 ; i<this._plateau.length ; i++) {
 			for (int j = 0 ; j<this._plateau[i].length ; j++) {
@@ -511,5 +508,9 @@ public class Plateau implements GestionBlock{
 	 
     public void setScore(int s) {
 		score = score + s ;
-    }
+	}
+	
+	public int getHighScore(){
+		return this.highScore ;
+	}	
 }
