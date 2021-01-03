@@ -14,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import Interface.GestionBlock;
 import java.io.InputStreamReader;
+import java.util.Random;
 
 
 public class Plateau implements GestionBlock{
@@ -26,6 +27,18 @@ public class Plateau implements GestionBlock{
 		this._plateau = new Block[x][y];
 		this.score = 0 ;
 		loadHighScore() ;
+	}
+
+	public void aide(){
+		int x = new Random().nextInt(20 - 15 + 1) + 15;
+		int y = new Random().nextInt(10 - 1 + 1) + 1;
+		while(this._plateau [x][y] == null){
+			x = new Random().nextInt(20 - 10 + 1) + 10;
+			y = new Random().nextInt(10 - 1 + 1) + 1;	
+		}
+		supprimer( x, y,new boolean[this.getHauteur()][this.getLargeur()]);
+
+
 	}
 
 	public void createSaveData(){

@@ -56,7 +56,12 @@ public class Jeu extends JFrame  {
 			JoueurGraphique.jouerNiveau(v1);
         });
         aide.addActionListener((ActionEvent e)->{
-            
+            p.aide();
+            p.actualiser();
+            this.reload(p);
+            this.refreshScore(p);
+            this.refreshHighScore(p);
+            this.win(p);
         });
 
         this.setTitle("PetRescue");

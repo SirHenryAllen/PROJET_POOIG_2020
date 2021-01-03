@@ -25,7 +25,6 @@ public class Settings {
 		g.ajouterNiveau(v3);
 		g.ajouterNiveau(v4);
 
-
 		try {
 			model = new BackgroundModel("/Assets/backgroundMenu.png");
 			MenuPrincipal view = new MenuPrincipal(model, g);
