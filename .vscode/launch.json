@@ -16,13 +16,6 @@
             "request": "launch",
             "mainClass": "Menu.Settings",
             "projectName": "PROJET_POOIG_2020_601faa83"
-        },
-        {
-            "type": "java",
-            "name": "Launch Test",
-            "request": "launch",
-            "mainClass": "test.Test",
-            "projectName": "PROJET_POOIG_2020_601faa83"
         }
     ]
 }

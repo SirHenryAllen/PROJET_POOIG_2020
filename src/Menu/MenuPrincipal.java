@@ -7,40 +7,29 @@ import model.Jouer.JouerShell;
 import model.Jouer.JoueurGraphique;
 
 import view.ChooseLevelView;
+import view.BackgroundModel;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridLayout;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
-import java.io.IOException;
-import java.util.Timer;
 
-import javax.swing.BorderFactory;
+import java.awt.GridLayout;
+
+import java.awt.event.ActionEvent;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.event.ChangeListener;
-import javax.swing.undo.UndoManager;
 
 public class MenuPrincipal extends JFrame {
 	private static final long serialVersionUID = -3909496315491074971L;
 	JButton play, profil, dev;
 	ImagePane imagePane ;
-	MenuModel model ;
+	BackgroundModel model ;
 	JMenuBar bar ;
 	private Groupe _groupe; 
 	
-	public MenuPrincipal(MenuModel model, Groupe g) {
+	public MenuPrincipal(BackgroundModel model, Groupe g) {
 		//View
 		this.model = model; 
 		this._groupe = g;  

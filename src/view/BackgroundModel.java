@@ -1,17 +1,17 @@
-package Menu ;
+package view ;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 
-public class MenuModel {
+public class BackgroundModel {
 	
 	public BufferedImage image ;
 
 	
-	public MenuModel(String chemin)throws IOException{	
+	public BackgroundModel(String chemin)throws IOException{	
 		
-		this.image = ImageIO.read(new File(chemin));
+		this.image = ImageIO.read(getClass().getResource(chemin));
     }
 	
 	public BufferedImage getImage() {

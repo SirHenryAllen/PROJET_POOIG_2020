@@ -1,16 +1,14 @@
-package Menu ;
+package Menu;
 
 import model.Niveau;
+import view.BackgroundModel;
 import model.Groupe;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.Timer;
 
 public class Settings {
-	MenuModel model;
+	BackgroundModel model;
 
 	public Settings() {
 		Niveau v1 = new Niveau(22, 12);
@@ -28,8 +26,7 @@ public class Settings {
 		g.ajouterNiveau(v4);
 
 		try {
-			model = new MenuModel("C:\\Users\\Sunay\\eclipse-workspace\\MenuM\\backgroundMenu.png");
-			//model = new MenuModel("/home/sha/Projets/PROJET_POOIG_2020/src/Menu/backgroundMenu.png");
+			model = new BackgroundModel("/Assets/backgroundMenu.png");
 			MenuPrincipal view = new MenuPrincipal(model, g);
 			view.pack();
 			view.setVisible(true);
