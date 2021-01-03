@@ -36,8 +36,9 @@ public class Plateau implements GestionBlock{
 			x = new Random().nextInt(20 - 10 + 1) + 10;
 			y = new Random().nextInt(10 - 1 + 1) + 1;	
 		}
-		supprimer( x, y,new boolean[this.getHauteur()][this.getLargeur()]);
-
+		if(this._plateau [x][y] instanceof BlockDestructible){
+			supprimer( x, y,new boolean[this.getHauteur()][this.getLargeur()]);
+		}
 
 	}
 

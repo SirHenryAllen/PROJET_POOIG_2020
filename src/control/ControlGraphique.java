@@ -1,6 +1,7 @@
 package control;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
 
@@ -26,6 +27,7 @@ public class ControlGraphique {
 
         public Carre(Color color, Plateau p, Jeu a) {
             this.setBounds(100, 200, 50, 50);
+            this.setBorder(BorderFactory.createEmptyBorder());
             this.p = p;
             this.affichage = a;
             this.setBackground(color);
