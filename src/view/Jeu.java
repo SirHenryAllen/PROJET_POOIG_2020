@@ -17,8 +17,6 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
-
 import java.awt.Color;
 import java.awt.*;
 
@@ -27,6 +25,7 @@ public class Jeu extends JFrame  {
     private JPanel playPanel;
     private Carre[][] pan;
     JLabel scoreLabel ;   
+    JLabel highScoreLabel ;   
     JMenuBar menubar ;
     JMenu file ;
 
@@ -34,23 +33,30 @@ public class Jeu extends JFrame  {
         this.playPanel = new JPanel();
         JButton replay = new JButton("replay");
         JButton quitter = new JButton("quitter");
+        JButton aide = new JButton("aide");
         JMenuBar menubar = new JMenuBar();
 
-        scoreLabel = new JLabel("Score : "+ p.getScore()) ;
+        scoreLabel = new JLabel("Score :"+ p.getScore()) ;
+        highScoreLabel = new JLabel("  Best score :"+ p.getHighScore()) ;
+
         this.setJMenuBar(menubar);
         menubar.add(quitter) ;
         menubar.add(replay) ;
-        menubar.add(scoreLabel) ;    
+        menubar.add(aide) ;
+        menubar.add(scoreLabel) ;
+        menubar.add(highScoreLabel);    
+        
         quitter.addActionListener((ActionEvent e)->{
             System.exit(0);
         });
-       
         replay.addActionListener((ActionEvent e)->{
             Niveau v1 = new Niveau(22, 12);
 			v1.ajouterBlock(3);
 			v1.getPlateau().actualiser();
 			JoueurGraphique.jouerNiveau(v1);
-
+        });
+        aide.addActionListener((ActionEvent e)->{
+            
         });
 
         this.setTitle("PetRescue");
@@ -66,7 +72,11 @@ public class Jeu extends JFrame  {
     }
 
     public void refreshScore(Plateau p) {
-        this.scoreLabel.setText(((Integer)p.getScore()).toString());
+        this.scoreLabel.setText("Score :"+((Integer)p.getScore()).toString());
+    }
+
+    public void refreshHighScore(Plateau p) {
+        this.highScoreLabel.setText("  Best score :"+((Integer)p.getHighScore()).toString());
     }
 
     // Construit le tableau de blocks (visuellement).

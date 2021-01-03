@@ -46,8 +46,9 @@ public class ControlGraphique {
             this.p.actualiser();
             this.affichage.reload(p);
             this.affichage.refreshScore(p);
+            this.affichage.refreshHighScore(p);
             this.affichage.win(p);
-            }
+        }
 
         @Override
         public void mouseEntered(MouseEvent e) {
