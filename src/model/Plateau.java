@@ -14,7 +14,6 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import Interface.GestionBlock;
 import java.io.InputStreamReader;
-import java.util.Random;
 
 
 public class Plateau implements GestionBlock{
