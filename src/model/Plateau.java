@@ -29,6 +29,18 @@ public class Plateau implements GestionBlock{
 		loadHighScore() ;
 	}
 
+	public void aide(){
+		int x = new Random().nextInt(20 - 15 + 1) + 15;
+		int y = new Random().nextInt(10 - 1 + 1) + 1;
+		while(this._plateau [x][y] == null){
+			x = new Random().nextInt(20 - 10 + 1) + 10;
+			y = new Random().nextInt(10 - 1 + 1) + 1;	
+		}
+		supprimer( x, y,new boolean[this.getHauteur()][this.getLargeur()]);
+
+
+	}
+
 	public void createSaveData(){
 		try {
 			File file = new File("highScore.dat") ;//on a preferé utiliser l'extension .dat au lieu de .txt pour que le joueur ne puisse pas modifier ses stats 

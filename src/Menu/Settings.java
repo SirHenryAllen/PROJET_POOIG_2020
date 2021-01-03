@@ -27,7 +27,6 @@ public class Settings {
 		g.ajouterNiveau(v3);
 		g.ajouterNiveau(v4);
 
-
 		try {
 			model = new MenuModel("C:\\Users\\Sunay\\eclipse-workspace\\MenuM\\backgroundMenu.png");
 			//model = new MenuModel("/home/sha/Projets/PROJET_POOIG_2020/src/Menu/backgroundMenu.png");
