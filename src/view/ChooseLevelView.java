@@ -16,6 +16,7 @@ public class ChooseLevelView extends JFrame {
     private Groupe _groupe;
     private JButton[] _levelPan;
     private JMenuBar _menubar;
+    BackgroundModel model ;
 
     public ChooseLevelView(Groupe g) {
         this.setTitle("Niveaux");
