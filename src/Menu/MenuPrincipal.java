@@ -24,7 +24,8 @@ public class MenuPrincipal extends JFrame {
 	private Groupe _groupe; 
 	
 	public MenuPrincipal(BackgroundModel model, Groupe g) {
-		//View
+		
+		// View
 		this.model = model; 
 		this._groupe = g;  
 		this.setTitle("PetRescue");

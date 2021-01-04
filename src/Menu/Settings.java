@@ -16,11 +16,13 @@ public class Settings {
 		Niveau v2 = new Niveau(22, 12);
 		Niveau v3 = new Niveau(22, 12);
 		Niveau v4 = new Niveau(22, 12);
+		Niveau v5 = new Niveau(22, 12);
 		// Ajout du contenu des niveaux
 		v1.ajouterBlock(1);
 		v2.ajouterBlock(2);
 		v3.ajouterBlock(3);
 		v4.ajouterBlock(4);
+		v5.ajouterBlock(0);
 		// Création du groupe de niveaux
 		Groupe g = new Groupe();
 		// Remplissage du groupe avec les niveaux
@@ -28,6 +30,7 @@ public class Settings {
 		g.ajouterNiveau(v2);
 		g.ajouterNiveau(v3);
 		g.ajouterNiveau(v4);
+		g.ajouterNiveau(v5);
 
 		// Création du model pour le MenuPrincipal
 		try {

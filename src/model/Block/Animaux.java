@@ -1,7 +1,8 @@
 package model.Block;
 
 public class Animaux extends Block {
-	private final char _type;	// Type d'animal
+	// Type d'animal
+	private final char _type;	
 
 	public Animaux(char t) {
 		super();

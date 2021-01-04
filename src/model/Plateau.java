@@ -5,7 +5,6 @@ import model.Block.Animaux;
 import model.Block.BlockFixe;
 import model.Block.BlockSpecial;
 import model.Block.BlockDestructible;
-import model.Block.BlockDestructibleSi;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -389,7 +388,7 @@ public class Plateau implements GestionBlock{
 
 	public boolean[][] preSupprimeColonne(int y, boolean[][] tab) {
 		for(int i = 0; i<this._plateau.length ; i++){
-			if(this._plateau[i][y] instanceof BlockDestructible || this._plateau[i][y] instanceof BlockDestructibleSi){
+			if(this._plateau[i][y] instanceof BlockDestructible){
 				tab[i][y] = true;	
 			}
 		}
@@ -398,7 +397,7 @@ public class Plateau implements GestionBlock{
 
 	public void supprimeColonne(int y){
 		for(int i = 0; i<this._plateau.length ; i++){
-			if(this._plateau[i][y] instanceof BlockDestructible || this._plateau[i][y] instanceof BlockDestructibleSi){
+			if(this._plateau[i][y] instanceof BlockDestructible){
 				this._plateau[i][y] = null;
 				System.out.println("Destruction");		
 				System.out.println("score :"+ this.getScore());
@@ -409,7 +408,7 @@ public class Plateau implements GestionBlock{
 
 	public boolean[][] preSupprimeLigne(int x, boolean[][] tab) {
 		for(int i = 0; i<this._plateau[x].length ; i++){
-			if(this._plateau[x][i] instanceof BlockDestructible || this._plateau[x][i] instanceof BlockDestructibleSi){
+			if(this._plateau[x][i] instanceof BlockDestructible){
 				tab[x][i] = true;	
 			}
 		}		
@@ -418,7 +417,7 @@ public class Plateau implements GestionBlock{
 
 	public void supprimeLigne(int x){
 		for(int i = 0; i<this._plateau[x].length ; i++){
-			if(this._plateau[x][i] instanceof BlockDestructible || this._plateau[x][i] instanceof BlockDestructibleSi){
+			if(this._plateau[x][i] instanceof BlockDestructible){
 				this._plateau[x][i] = null;
 				System.out.println("Destruction");		
 				System.out.println("score :"+ this.getScore());
@@ -483,12 +482,6 @@ public class Plateau implements GestionBlock{
 
 	public boolean isAnimaux(int x, int y) {
 		if (this._plateau[x][y] instanceof Animaux) {
-			return true;
-		} return false;
-	}
-	
-	public boolean isDestructibleSi(int x, int y) {
-		if (this._plateau[x][y] instanceof BlockDestructibleSi) {
 			return true;
 		} return false;
 	}

@@ -10,12 +10,13 @@ import model.Block.BlockSpecial;
 public class Niveau extends Groupe {
 	private Plateau _plateau;
 
+	// Définition de la taille du plateau (si supérieur à 10 de haut, le reste ne sera pas visible par le joueur)
 	public Niveau(int x, int y) {
-		this._plateau = new Plateau(x, y);	// définition de la taille du plateau (si supérieur à 10 de haut, le reste ne sera pas visible par le joueur)
+		this._plateau = new Plateau(x, y);	
 	}
 
 	public final void ajouterBlock(int niveau) {
-		// Décors
+		// Décors (les deux for remplissent les bordures invisibles du tableau par des bloques indestructibles pour éviter de dépasser la limite du tableau lors de la suppression de bloques)
 		for (int a = 0 ; a < 22 ; a++) {
 			this._plateau.setBlock(a, 0, new BlockFixe('a'));
 			this._plateau.setBlock(a, 11, new BlockFixe('a'));
@@ -24,6 +25,7 @@ public class Niveau extends Groupe {
 			this._plateau.setBlock(21, b, new BlockFixe('a'));
 			this._plateau.setBlock(0, b, new BlockFixe('a'));
 		}
+		// Evaluation du niveau demandé et appel de la fonction associée pour sa construction
 		switch(niveau) {
 			case 1: levelOne(); break;
 			case 2: levelTwo(); break;
@@ -33,8 +35,9 @@ public class Niveau extends Groupe {
 		}
 	}
 
+	//Niveau 1
 	public final void levelOne() {
-		//Niveau 1
+		
 		// Blocks Desctructibles & Animaux
 		for (int i = 1 ; i < 4 ; i++) {
 			this._plateau.setBlock(13, i, new BlockDestructible('b'));
@@ -112,8 +115,8 @@ public class Niveau extends Groupe {
 		this._plateau.setBlock(20, 10, new BlockDestructible('c'));
 	}
 
+	// Niveau 2
 	public final void levelTwo() {
-		// Niveau 2
 		this._plateau.setBlock(11, 2, new BlockDestructible('d'));
 		this._plateau.setBlock(11, 3, new BlockDestructible('d'));
 		this._plateau.setBlock(11, 4, new BlockDestructible('d'));			
@@ -226,6 +229,7 @@ public class Niveau extends Groupe {
 		this._plateau.setBlock(20, 10, new BlockDestructible('b'));
 	}
 
+	// Niveau 3
 	public final void levelThree() {
 		this._plateau.setBlock(10, 2, new BlockDestructible('c'));
 		this._plateau.setBlock(10, 3, new BlockDestructible('b'));
@@ -360,6 +364,7 @@ public class Niveau extends Groupe {
 		this._plateau.setBlock(20, 10, new BlockSpecial('b'));
 	}
 
+	// Niveau 4
 	public final void levelFor() {
 		// Décors
 		this._plateau.setBlock(20, 10, new BlockFixe('a'));
@@ -537,8 +542,8 @@ public class Niveau extends Groupe {
 		
 	}
 
-	public final void random() {
-		//Aléatoire, pour les test (non recommandé)
+	//Aléatoire, pour les test (non recommandé)
+	public void random() {
 		for (int a = 0 ; a < 22 ; a++) {
 			this._plateau.setBlock(a, 0, new BlockFixe('a'));
 			this._plateau.setBlock(a, 11, new BlockFixe('a'));
@@ -563,6 +568,9 @@ public class Niveau extends Groupe {
 				}
 				else if (new Random().nextInt(6) == 4) {
 					this._plateau.setBlock(i, j, new BlockDestructible('d'));
+				}
+				else if (new Random().nextInt(6) == 5) {
+					this._plateau.setBlock(i, j, new Animaux('a'));
 				}
 			}
 		}
