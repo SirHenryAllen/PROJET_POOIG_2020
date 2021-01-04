@@ -1,6 +1,5 @@
 package view;
 import model.Block.BlockDestructible;
-import model.Block.BlockDestructibleSi;
 import model.Block.BlockFixe;
 import model.Block.BlockSpecial;
 import model.Plateau;
@@ -45,10 +44,6 @@ public class AffichageShell {
 					if(((BlockDestructible)p.getBlock(j, k)).couleur == 'd') {
 						System.out.print("d  ");
 					}
-				}
-				//Affichage des blocks destructibles spéciaux
-				if (p.getBlock(j, k) instanceof BlockDestructibleSi) {
-					System.out.print("-  ");
 				}
 				if (p.getBlock(j, k) instanceof BlockFixe) {
 					System.out.print("# ");
@@ -114,10 +109,6 @@ public class AffichageShell {
 					if (((BlockSpecial)p.getBlock(j, k)).getType() == 'a') {
 						System.out.print("* ");
 					}
-				}
-				//Affichage des blocks destructibles spéciaux
-				if (p.getBlock(j, k) instanceof BlockDestructibleSi) {
-					System.out.print("-  ");
 				}
 			}
 			System.out.println("");	

@@ -5,7 +5,6 @@ import model.Block.Animaux;
 import model.Block.BlockFixe;
 import model.Block.BlockSpecial;
 import model.Block.BlockDestructible;
-import model.Block.BlockDestructibleSi;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -22,13 +21,14 @@ public class Plateau implements GestionBlock{
 	private int score ;
 	private int highScore ;
 
+	// Création du plateau et de ses attributs standards
 	public Plateau (int x, int y) {
-
 		this._plateau = new Block[x][y];
 		this.score = 0 ;
 		loadHighScore() ;
 	}
 
+	// Sélection d'une case aléatoire non nul pour sa suppression
 	public void aide(){
 		int x = new Random().nextInt(20 - 15 + 1) + 15;
 		int y = new Random().nextInt(10 - 1 + 1) + 1;
@@ -43,9 +43,10 @@ public class Plateau implements GestionBlock{
 		}
 	}
 
+	// Enregistrement du score
 	public void createSaveData(){
 		try {
-			File file = new File("highScore.dat") ;//on a preferé utiliser l'extension .dat au lieu de .txt pour que le joueur ne puisse pas modifier ses stats 
+			File file = new File("highScore.dat") ;	//on a preferé utiliser l'extension .dat au lieu de .txt pour que le joueur ne puisse pas modifier ses stats 
 			FileWriter output = new FileWriter(file) ;
 			BufferedWriter writer = new BufferedWriter(output) ;
 			writer.write(""+0);
@@ -56,6 +57,7 @@ public class Plateau implements GestionBlock{
 		}
 	}
 
+	// Chargement du High Score
 	public void loadHighScore(){
 		try {
 			File f = new File("highScore.dat") ;
@@ -71,6 +73,7 @@ public class Plateau implements GestionBlock{
 		}
 	}
 
+	// Modification du High Score
 	public void setHighScore(){
 		FileWriter output = null ;
 		try {
@@ -85,7 +88,7 @@ public class Plateau implements GestionBlock{
 		}
 	}
 
-	
+	// Vérification de la présence d'Animaux sur le tableau
 	public boolean checkAnimaux() {
 		for (int i = 0 ; i<this._plateau.length ; i++) {
 			for (int j = 0 ; j<this._plateau[i].length ; j++) {
@@ -98,6 +101,7 @@ public class Plateau implements GestionBlock{
 		return true;
 	}
 
+	// Ajout de bloques au tableau Block[][]
 	public boolean ajouter(int x, int y, Block b) {
 		// Ajout du Block b à l'indice x,y : ssi x,y est vide
 		if (isEmpty(x, y)) {
@@ -115,7 +119,12 @@ public class Plateau implements GestionBlock{
 		} return false;
 	} 
 
+
+	// Si l'indice passé en argument est supprimable
 	public boolean[][] preSupprimer(int x, int y, boolean[][] verifRecurence) {
+		/* On détermine son type exact pour sélectionner en conséquence ses voisins qui le sont également 
+		 et ensuite retourner un tableau booléen témoin, calqué sur la taille de Block[][] avec les indices 'true'
+		 comme éléments à repaint en blanc */
 		if (isSpecial(x, y)) {
 			if (((BlockSpecial)this._plateau[x][y]).getType() == 'a') {
 				return preBombe(x, y, verifRecurence);
@@ -180,11 +189,12 @@ public class Plateau implements GestionBlock{
 		return verifRecurence;
 	}
 
+
 	public void supprimer(int x, int y, boolean[][] verifRecurence) {
 		//debug
 		System.out.println("supprimer");
 		System.out.println(x + ", " + y);
-		//
+
 		if (isSpecial(x, y)) {
 			if (((BlockSpecial)this._plateau[x][y]).getType() == 'a') {
 				System.out.println("bombre sup");
@@ -203,16 +213,31 @@ public class Plateau implements GestionBlock{
 			}
 		}
 
+		// Si le bloque à l'indice x, y n'est pas destructible, on sort de la fonction
 		else if (!isDestructible(x, y)) {
 			return;
 		}
 
+		/* Après avoir préalablement vérifié que le bloque était destructible,
+		 on parcours récursivement tous les voisins afin de vérifier qu'ils soient du même type
+		 (BlockDestructible) et de la même couleur. Si oui, on confirme que l'indice a été évalué
+		 puis on rappel la fonction avec l'indice du voisin jusqu'à arriver à un état terminal.
+		 A la fin de l'évaluation, on dépile et supprime les cases du plateau en les assignant à null 
+		*/
+
+		// Vérification que l'indice n'est pas pas null (donc vide)
 		else if (!(isEmpty(x, y+1))) {
+			// Vérification que l'indice est destructible
 			if (isDestructible(x, y+1)) {
+				// Vérification que l'indice n'a pas déjà été évalué
 				if (!verifRecurence[x][y+1]) {
+					// Vérification que l'indice est de la même couleur que l'indice courant
 					if ((((BlockDestructible)this._plateau[x][y]).couleur) == (((BlockDestructible)this._plateau[x][y+1]).couleur)) {
+						// Assignation de l'emplacement de l'indice courant à true pour confirmer son évaluation
 						verifRecurence[x][y] = true;
+						// Rappel de la fonction récursivement avec le nouvel indice
 						supprimer(x, y+1, verifRecurence);
+						// Débug
 						System.out.println("Destruction");
 					}					
 				}
@@ -254,12 +279,15 @@ public class Plateau implements GestionBlock{
 				}
 			}
 		}
+		// Suppression de l'indice en l'assigant à null
 		this._plateau[x][y] = null;		
+		// Ajout des points de suppression au score
 		this.setScore(10);
+		// Débug
 		System.out.println("score :"+ this.getScore());
 		System.out.println("highScore :"+ this.highScore);
 		
-		//check si ya des animaux tout en bas et les suppriment
+		// S'il y a des bloques de type Animaux au bas du tableau, on les supprime
 		for(int i = 0 ; i<12 ; i++){
 			if(this._plateau[20][i] instanceof Animaux){
 				this._plateau[20][i] = null ;	
@@ -272,6 +300,9 @@ public class Plateau implements GestionBlock{
 		}
 	}
 
+
+	/* Si les bloques adjacents et en diagonale sont destructibles, 
+	on return leurs indice à true dans un tableau booléen afin d'évaluer quels bloques repaint en blanc pour l'animation */
 	public boolean[][] preBombe(int x, int y, boolean[][] tab) {
 		if (!(isEmpty(x, y+1))) {
 			if (isDestructible(x, y+1)) {		
@@ -323,8 +354,9 @@ public class Plateau implements GestionBlock{
 		return tab;	
 	}
 
+
 	public void bombe(int x, int y) {
-		//block special qui supprime les blocks destructible adjacents 
+		//block special qui supprime les bloques destructibles adjacents et en diagonale
 		if (!(isEmpty(x, y+1))) {
 			if (isDestructible(x, y+1)) {		
 				this._plateau[x][y+1] = null;		
@@ -387,18 +419,21 @@ public class Plateau implements GestionBlock{
 		System.out.println("highScore :"+ this.highScore);
 	}
 
+
+	// Même principe de preBombe avec les colonnes
 	public boolean[][] preSupprimeColonne(int y, boolean[][] tab) {
 		for(int i = 0; i<this._plateau.length ; i++){
-			if(this._plateau[i][y] instanceof BlockDestructible || this._plateau[i][y] instanceof BlockDestructibleSi){
+			if(this._plateau[i][y] instanceof BlockDestructible){
 				tab[i][y] = true;	
 			}
 		}
 		return tab;
 	}
 
+	// Suppression des bloques destructibles sur toute une colonne
 	public void supprimeColonne(int y){
 		for(int i = 0; i<this._plateau.length ; i++){
-			if(this._plateau[i][y] instanceof BlockDestructible || this._plateau[i][y] instanceof BlockDestructibleSi){
+			if(this._plateau[i][y] instanceof BlockDestructible){
 				this._plateau[i][y] = null;
 				System.out.println("Destruction");		
 				System.out.println("score :"+ this.getScore());
@@ -407,18 +442,20 @@ public class Plateau implements GestionBlock{
 		this.setScore(40);
 	}
 
+	// Même principe que preSupprimeColonne avec les lignes
 	public boolean[][] preSupprimeLigne(int x, boolean[][] tab) {
 		for(int i = 0; i<this._plateau[x].length ; i++){
-			if(this._plateau[x][i] instanceof BlockDestructible || this._plateau[x][i] instanceof BlockDestructibleSi){
+			if(this._plateau[x][i] instanceof BlockDestructible){
 				tab[x][i] = true;	
 			}
 		}		
 		return tab;
 	}
 
+	// Même principe que supprimeColonne avec les lignes
 	public void supprimeLigne(int x){
 		for(int i = 0; i<this._plateau[x].length ; i++){
-			if(this._plateau[x][i] instanceof BlockDestructible || this._plateau[x][i] instanceof BlockDestructibleSi){
+			if(this._plateau[x][i] instanceof BlockDestructible){
 				this._plateau[x][i] = null;
 				System.out.println("Destruction");		
 				System.out.println("score :"+ this.getScore());
@@ -428,6 +465,7 @@ public class Plateau implements GestionBlock{
 		}
 		this.setScore(40);
 	}
+
 
 	public void actualiser() {
 		// Mise en oeuvre de la "gravité" afin de de ramener les blocs, ne s'appuyant sur rien, vers le bas.
@@ -448,7 +486,7 @@ public class Plateau implements GestionBlock{
 		if(this.score >this.highScore){
 			this.highScore = this.score ;
 		}
-		// Décalage vers la gauche
+		// Décalage vers la gauche si absence de bloques destructibles
 		for (int i = 1 ; i < this._plateau[0].length-1 ; i++) {
 			if (this._plateau[20][i] == null) {
 				for (int j = 1 ; j < this._plateau.length ; j++) {
@@ -475,59 +513,57 @@ public class Plateau implements GestionBlock{
 		}
 	}
 
+
+	// Est-ce que le bloque x,y est destructible ?
 	public boolean isDestructible(int x, int y) {
 		if (this._plateau[x][y] instanceof BlockDestructible) {
 			return true;
 		} return false;
 	}
 
+	// Est-ce que le bloque x,y est de type Animaux ?
 	public boolean isAnimaux(int x, int y) {
 		if (this._plateau[x][y] instanceof Animaux) {
 			return true;
 		} return false;
 	}
-	
-	public boolean isDestructibleSi(int x, int y) {
-		if (this._plateau[x][y] instanceof BlockDestructibleSi) {
-			return true;
-		} return false;
-	}
 
+	// Est-ce que le bloque x,y est de type BlockSpecial ?
 	public boolean isSpecial(int x, int y) {
 		if (this._plateau[x][y] instanceof BlockSpecial) {
 			return true;
 		} return false;
 	}
 
+
+	// Accesseurs
 	public Block getBlock(int x, int y) {
 		return this._plateau[x][y];
 	}
-
 	public Block[][] getPlateau() {
 		return this._plateau;
 	}
-	
 	public int getHauteur() {
 		return this._plateau.length;
 	}
-
 	public int getLargeur() {
 		return this._plateau[0].length;
 	}
-
-	public void setBlock(int x, int y, Block b) {
-		this._plateau[x][y] = b;
-	}
-
 	public int getScore() {
         return this.score ;
 	}
-	 
+	public int getHighScore(){
+		return this.highScore ;
+	}	
+	
+	
+	// Modificateurs 
+	public void setBlock(int x, int y, Block b) {
+		this._plateau[x][y] = b;
+	}
     public void setScore(int s) {
 		score = score + s ;
 	}
 	
-	public int getHighScore(){
-		return this.highScore ;
-	}	
+	
 }

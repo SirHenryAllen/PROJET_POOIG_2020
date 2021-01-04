@@ -35,13 +35,15 @@ public class ChooseLevelView extends JFrame {
         this._levelPan[1].addActionListener((ActionEvent e)->{JoueurGraphique.jouerNiveau(this._groupe.getNiveaux().get(1));});
         this._levelPan[2].addActionListener((ActionEvent e)->{JoueurGraphique.jouerNiveau(this._groupe.getNiveaux().get(2));});
         this._levelPan[3].addActionListener((ActionEvent e)->{JoueurGraphique.jouerNiveau(this._groupe.getNiveaux().get(3));});
+        this._levelPan[4].addActionListener((ActionEvent e)->{JoueurGraphique.jouerNiveau(this._groupe.getNiveaux().get(4));});
 
     }
 
     public void lister() {
-        for (int i = 0 ; i < this._groupe.getNiveaux().size() ; i++) {
+        for (int i = 0 ; i < this._groupe.getNiveaux().size()-1 ; i++) {
             this._levelPan[i] = new JButton("Niveau " + (i+1));
         }
+        this._levelPan[4] = new JButton("Random");
     }
 
     public void addButtonsToView() {
