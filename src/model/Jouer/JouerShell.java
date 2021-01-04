@@ -24,13 +24,14 @@ public class JouerShell {
     }
 
     public static Niveau evalNiveau(Scanner read, Groupe g) {
-		System.out.println("Choisissez votre niveau :\n - 0 : Random\n - 1 : Niveau 1\n - 2 : Niveau 2\n - 3 : Niveau 3");
+		System.out.println("Choisissez votre niveau :\n - 0 : Random\n - 1 : Niveau 1\n - 2 : Niveau 2\n - 3 : Niveau 3\n - 4 : Niveau 4");
         int val = read.nextInt();
         switch(val) {
             case 0: return g.getNiveaux().get(0);
             case 1: return g.getNiveaux().get(1);
             case 2: return g.getNiveaux().get(2);
             case 3: return g.getNiveaux().get(3);
+            case 4: return g.getNiveaux().get(4);
             default: return g.getNiveaux().get(0);
         }
 	}
