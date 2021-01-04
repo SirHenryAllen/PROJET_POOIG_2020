@@ -85,7 +85,7 @@ public class Jeu extends JFrame  {
         this.highScoreLabel.setText("  Best score :"+((Integer)p.getHighScore()).toString());
     }
 
-    // Construit le tableau de blocks (visuellement).
+    // Crée tous les Carre et remplit le tableau de Carre avec .
     public void construct(Plateau p) {
         for (int i = 0 ; i < this.pan.length ; i++) {
             for (int j = 0 ; j < this.pan.length ; j++) {
@@ -134,6 +134,7 @@ public class Jeu extends JFrame  {
     }
 }
 
+    // Modifi les Carre en blanc si leur valeur associée dans le tableau tab est true (pour donner l'impression de suppression avant de reload())
     public void displayOnClick(boolean[][] tab) {
         System.out.println("display");
         for (int i = 0 ; i < this.pan.length ; i++) {
@@ -145,7 +146,7 @@ public class Jeu extends JFrame  {
         }
     }
 
-    // Actualise l'affichage graphique des éléments
+    // Change la couleur des Carre dans le tableau en fonction du nouvel emplacement des bloques dans le tableau de Block[][]
     public void reload(Plateau p) {
             for (int i = 0 ; i < this.pan.length ; i++) {
                 for (int j = 0 ; j < this.pan.length ; j++) {
@@ -192,10 +193,10 @@ public class Jeu extends JFrame  {
             }
     }
 
+    // Accesseurs
     public Carre getCarre(int x, int y) {
         return this.pan[x][y];
     }
-
     public int[] getPos(Carre c) {
         int[] t = new int[2];
         for (int i = 0 ; i < this.pan.length ; i++) {
@@ -209,12 +210,14 @@ public class Jeu extends JFrame  {
         return t;
     }
 
+    // Vérification si la partie est gagnante
     public void win(Plateau p){
         if(p.checkAnimaux()){
+            // Passage du bouton aide en invisible
             aide.setVisible(false);
-            JLabel winner = new JLabel() ;
-            //this.remove(playPanel); 
+            JLabel winner = new JLabel() ; 
             JPanel win = new JPanel();
+            // Affichage du label de la victoire
             winner.setText("vous avez gagné !");
             winner.setHorizontalAlignment(0);
             winner.setVisible(true);

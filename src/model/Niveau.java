@@ -574,6 +574,7 @@ public class Niveau extends Groupe {
 				}
 			}
 		}
+		this._plateau.actualiser();
 	}
 
 	public Plateau getPlateau() {
