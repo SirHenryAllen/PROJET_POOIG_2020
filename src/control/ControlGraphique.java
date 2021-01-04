@@ -51,7 +51,8 @@ public class ControlGraphique {
         // Déclenche l'événement lorsqu'un clique est détecté dans une zone particulière
         @Override
         public void mouseClicked(MouseEvent e) {
-
+            this.p.actualiser();
+            this.affichage.reload(p);
         }
 
         @Override
