@@ -1,19 +1,13 @@
 package Menu;
 
-import view.Profil;
-import model.Niveau;
 import model.Groupe;
 import model.Jouer.JouerShell;
-import model.Jouer.JoueurGraphique;
-
 import view.ChooseLevelView;
 import view.BackgroundModel;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
-
 import java.awt.GridLayout;
-
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
@@ -23,7 +17,7 @@ import javax.swing.JPanel;
 
 public class MenuPrincipal extends JFrame {
 	private static final long serialVersionUID = -3909496315491074971L;
-	JButton play, profil, dev;
+	JButton play, dev;
 	ImagePane imagePane ;
 	BackgroundModel model ;
 	JMenuBar bar ;
@@ -38,7 +32,6 @@ public class MenuPrincipal extends JFrame {
 		this.setResizable(false);
 		this.imagePane = new ImagePane();
 		this.play = new JButton("PLAY");
-		this.profil = new JButton("PROFIL");
 		this.dev = new JButton("MODE DEVELOPPEUR (shell)");
 		this.setPreferredSize(new Dimension(model.getImage().getWidth(),model.getImage().getHeight()));
 		this.setContentPane(imagePane);
@@ -46,7 +39,6 @@ public class MenuPrincipal extends JFrame {
 		JMenuBar bar = new JMenuBar();
         bar.setLayout(new GridLayout(1,3));
 		bar.add(play);
-		bar.add(profil);
 		bar.add(dev);
 		
 		this.setJMenuBar(bar);
@@ -54,9 +46,6 @@ public class MenuPrincipal extends JFrame {
 
 		play.addActionListener((ActionEvent e)->{new ChooseLevelView(this._groupe);});
 		dev.addActionListener((ActionEvent e)->{JouerShell.jouerNiveau(this._groupe);});
-        profil.addActionListener((ActionEvent e)->{
-			new Profil();
-		});
 	}
  
     public class ImagePane extends JPanel{

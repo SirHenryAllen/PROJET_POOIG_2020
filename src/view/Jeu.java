@@ -8,10 +8,9 @@ import model.Block.BlockFixe;
 import model.Block.BlockSpecial;
 import model.Plateau;
 import control.ControlGraphique.Carre;
+
 import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.util.Timer;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
