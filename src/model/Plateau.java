@@ -33,13 +33,14 @@ public class Plateau implements GestionBlock{
 		int x = new Random().nextInt(20 - 15 + 1) + 15;
 		int y = new Random().nextInt(10 - 1 + 1) + 1;
 		while(this._plateau [x][y] == null){
-			x = new Random().nextInt(20 - 10 + 1) + 10;
+			x = new Random().nextInt(20 - 15 + 1) + 15;
 			y = new Random().nextInt(10 - 1 + 1) + 1;	
 		}
 		if(this._plateau [x][y] instanceof BlockDestructible){
 			supprimer( x, y,new boolean[this.getHauteur()][this.getLargeur()]);
+		}else{
+			aide();
 		}
-
 	}
 
 	public void createSaveData(){
@@ -437,6 +438,9 @@ public class Plateau implements GestionBlock{
 						this._plateau[i+1][j] = this._plateau[i][j]; 
 						this._plateau[i][j] = null;
 						this.actualiser();
+					}
+					if(this._plateau[20][j] instanceof Animaux){
+						this._plateau[i][j] = null;
 					}
 				}
 			}

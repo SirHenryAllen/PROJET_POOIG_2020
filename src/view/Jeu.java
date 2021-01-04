@@ -10,6 +10,7 @@ import model.Plateau;
 import control.ControlGraphique.Carre;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.util.Timer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,6 +25,7 @@ public class Jeu extends JFrame  {
     private static final long serialVersionUID = 1L;
     private JPanel playPanel;
     private Carre[][] pan;
+    JButton aide ;
     JLabel scoreLabel ;   
     JLabel highScoreLabel ;   
     JMenuBar menubar ;
@@ -33,7 +35,7 @@ public class Jeu extends JFrame  {
         this.playPanel = new JPanel();
         JButton replay = new JButton("replay");
         JButton quitter = new JButton("quitter");
-        JButton aide = new JButton("aide");
+        aide = new JButton("aide");
         JMenuBar menubar = new JMenuBar();
 
         scoreLabel = new JLabel("Score :"+ p.getScore()) ;
@@ -210,6 +212,7 @@ public class Jeu extends JFrame  {
 
     public void win(Plateau p){
         if(p.checkAnimaux()){
+            aide.setVisible(false);
             JLabel winner = new JLabel() ;
             //this.remove(playPanel); 
             JPanel win = new JPanel();
