@@ -17,10 +17,13 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+
+import Interface.GestionJeu;
+
 import java.awt.Color;
 import java.awt.*;
 
-public class Jeu extends JFrame  {
+public class Jeu extends JFrame implements GestionJeu  {
     private static final long serialVersionUID = 1L;
     private JPanel playPanel;
     private Carre[][] pan;
