@@ -25,5 +25,5 @@ Le projet contient 5 packages :
 ### Via un IDE
 
 1. importer le projet : open folder -> PROJET_POOIG_2020
-2. compiler et exectuer le projet : ``F5`` 
-3. si l'IDE demande la class "cible" (même si normalement cela est précisé dans le fichier launch.json), sélectionner : ``Menu.Settings``
+2. Run le projet : ``F5`` 
+3. si l'IDE demande la class "cible" (même si normalement cela est précisé dans le fichier launch.json), sélectionner : ``Menu.Settings`` (contient la fonction main)
