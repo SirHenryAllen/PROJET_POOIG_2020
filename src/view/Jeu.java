@@ -1,7 +1,5 @@
 package view;
 
-import model.Niveau;
-import model.Jouer.JoueurGraphique;
 import model.Block.Animaux;
 import model.Block.BlockDestructible;
 import model.Block.BlockFixe;
@@ -35,7 +33,6 @@ public class Jeu extends JFrame implements GestionJeu  {
 
     public Jeu(Plateau p) throws IOException{
         this.playPanel = new JPanel();
-        JButton replay = new JButton("replay");
         JButton quitter = new JButton("quitter");
         aide = new JButton("aide");
         JMenuBar menubar = new JMenuBar();
@@ -45,19 +42,12 @@ public class Jeu extends JFrame implements GestionJeu  {
 
         this.setJMenuBar(menubar);
         menubar.add(quitter) ;
-        menubar.add(replay) ;
         menubar.add(aide) ;
         menubar.add(scoreLabel) ;
         menubar.add(highScoreLabel);    
         
         quitter.addActionListener((ActionEvent e)->{
             System.exit(0);
-        });
-        replay.addActionListener((ActionEvent e)->{
-            Niveau v1 = new Niveau(22, 12);
-			v1.ajouterBlock(3);
-			v1.getPlateau().actualiser();
-			JoueurGraphique.jouerNiveau(v1);
         });
         aide.addActionListener((ActionEvent e)->{
             p.aide();
