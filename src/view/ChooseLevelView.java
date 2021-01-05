@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 
 public class ChooseLevelView extends JFrame {
     private static final long serialVersionUID = -8094173797402644184L;
-    private JPanel _levelPanel;
+    JPanel _levelPanel ;
     private Groupe _groupe;
     private JButton[] _levelPan;
     private JMenuBar _menubar;
@@ -20,8 +20,8 @@ public class ChooseLevelView extends JFrame {
 
     public ChooseLevelView(Groupe g) {
         this.setTitle("Niveaux");
-        this.setSize(800, 600);
-        
+        this.setSize(500, 100);
+        this.setResizable(false);
         this._levelPanel = new JPanel();
         this.setVisible(true); 
         this._groupe = g;
